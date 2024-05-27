@@ -1,0 +1,14 @@
+body {
+    padding-top: 20px;
+}
+
+.admin {
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 50px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}

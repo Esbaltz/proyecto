@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libro: Holly de Stephen King</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static "aplicacion/css/libs.css" %}">
+</head>
+
+<body>
+
+  <!-- Navbar (sit on top) -->
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+      <a href="index.html" class="w3-bar-item w3-button w3-wide efect">Entre Verbos</a>
+      <!-- Right-sided navbar links -->
+      <div class="w3-right w3-hide-small l-efect">
+        <a href="index.html" class="w3-bar-item w3-button">Inicio</a>
+        <a href="tienda.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> Tienda</a>
+        <a href="pagina_carrito_general.html" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> Carrito</a>
+        <a href="paginas_inicio_secion/Inicio_secion.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>
+          Iniciar Sesión</a>
+        <a href="usuario/user.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Usuario</a>
+      </div>
+      <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+        onclick="w3_open()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Sidebar on small screens when clicking the menu icon -->
+  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
+    style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Cerrar
+      ×</a>
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">Inicio</a>
+    <a href="tienda.html" onclick="w3_close()" class="w3-bar-item w3-button">Tienda</a>
+    <a href="pagina_carrito_general.html" onclick="w3_close()" class="w3-bar-item w3-button">Carrito</a>
+    <a href="paginas_inicio_secion/Inicio_secion.html" onclick="w3_close()" class="w3-bar-item w3-button">Iniciar
+      Sesión</a>
+    <a href="usuario/user.html" onclick="w3_close()" class="w3-bar-item w3-button">Usuario</a>
+  </nav>
+
+  <!-- Page content -->
+  <div class="w3-content w3-padding-16" style="max-width:1000px">
+    <!-- About Section -->
+    <div class="w3-row w3-padding-64" id="about">
+      <div class="w3-col m6 w3-padding-large">
+        <img src="../img/Holly_stephen_king.jpg" class="w3-round w3-image img-move" alt="Table Setting" width="600">
+      </div>
+      <div class="w3-col m6 w3-padding-large">
+        <h1 class="w3-center">HOLLY</h1>
+        <h3 class="w3-center">Stephen King</h3>
+        <p class="w3-large" id="book-description">Cargando descripción...</p>
+        <div class="w3-padding-64 w3-center">
+          <a href="pagina_domicilio_y_pagar.html">
+            <button class="w3-button w3-gray w3-hover-black">Agregar al carrito</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- End page content -->
+  </div>
+
+  <div class="w3-padding-16">
+    <h1 class="w3-center w3-large w3-black" style="margin-right: 10%; margin-left: 10%;">RELACIONADOS</h1>
+  </div>
+  <div class="w3-content" style="max-width:1200px">
+    <!-- First Photo Grid-->
+    <div class="w3-row-padding w3-center" id="food">
+      <div class="w3-quarter">
+        <a href="pagina_general_libro.html" class="img-move">
+          <img src="../img/Autonomous_libro.jpg" alt="Sandwich" style="width:100%">
+        </a>
+        <h3>Autonumus</h3>
+        <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+      <div class="w3-quarter">
+        <a href="pagina_general_libro.html" class="img-move">
+          <img src="../img/El_hobit.jpg" alt="Steak" style="width:100%">
+        </a>
+        <h3>El hobbit</h3>
+        <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.
+        </p>
+      </div>
+      <div class="w3-quarter">
+        <a href="pagina_general_libro.html" class="img-move">
+          <img src="../img/historia2.png" alt="Cherries" style="width:100%">
+        </a>
+        <h3>Holly</h3>
+        <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        <p>What else?</p>
+      </div>
+      <div class="w3-quarter">
+        <a href="pagina_general_libro.html" class="img-move">
+          <img src="../img/metro.jpg" alt="Pasta and Wine" style="width:100%">
+        </a>
+        <h3>Metro</h3>
+        <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-center w3-black w3-padding-64 foot">
+    <a href="pagina_general_libro.html" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Al
+      inicio</a>
+    <p>Hecho por <a href="index.html" title="Regresar al inicio" target="_blank" class="w3-hover-text-green">Entre
+        Verbos</a></p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/menus.js"></script>
+  <script>
+    window.onload = function () {
+        desc();
+    };
+</script>
+</body>
+
+</html>

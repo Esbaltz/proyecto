@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.form-control {
+    margin-bottom: 20px;
+}
+
+.icon {
+    position: absolute;
+    top: 11px;
+    left: 10px;
+    color: #ccc;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-block {
+    width: 100%;
+}
