@@ -20,9 +20,9 @@
             <a href="index.html" class="w3-bar-item w3-button w3-wide efect">Entre Verbos</a>
             <!-- Right-sided navbar links -->
             <div class="w3-right w3-hide-small l-efect">
-                <a href="index.html" class="w3-bar-item w3-button">Inicio</a>
-                <a href="tienda.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> Tienda</a>
-                <a href="pagina_carrito_general.html" class="w3-bar-item w3-button"><i class="fa fa-usd"></i>
+                <a href="{% url 'index' %}" class="w3-bar-item w3-button">Inicio</a>
+                <a href="{% url 'tienda' %}" class="w3-bar-item w3-button"><i class="fa fa-th"></i> Tienda</a>
+                <a href="{% url 'carrito' %}" class="w3-bar-item w3-button"><i class="fa fa-usd"></i>
                     Carrito</a>
                 <a href="paginas_inicio_secion/Inicio_secion.html" class="w3-bar-item w3-button"><i
                         class="fa fa-envelope"></i> Iniciar Sesión</a>

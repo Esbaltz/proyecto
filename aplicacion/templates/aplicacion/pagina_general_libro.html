@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,7 +8,7 @@
   <title>Libro: Holly de Stephen King</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{% static "aplicacion/css/libs.css" %}">
+  <link rel="stylesheet" href="{% static 'aplicacion/css/libs.css' %}">
 </head>
 
 <body>
@@ -18,9 +19,9 @@
       <a href="index.html" class="w3-bar-item w3-button w3-wide efect">Entre Verbos</a>
       <!-- Right-sided navbar links -->
       <div class="w3-right w3-hide-small l-efect">
-        <a href="index.html" class="w3-bar-item w3-button">Inicio</a>
-        <a href="tienda.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> Tienda</a>
-        <a href="pagina_carrito_general.html" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> Carrito</a>
+        <a href="{% url 'index' %}" class="w3-bar-item w3-button">Inicio</a>
+                <a href="{% url 'tienda' %}" class="w3-bar-item w3-button"><i class="fa fa-th"></i> Tienda</a>
+                <a href="{% url 'carrito' %}" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> Carrito</a>
         <a href="paginas_inicio_secion/Inicio_secion.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>
           Iniciar Sesión</a>
         <a href="usuario/user.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Usuario</a>
