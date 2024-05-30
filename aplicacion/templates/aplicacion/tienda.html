@@ -64,13 +64,13 @@
             </div>
 
             <div class="category-list" id="fiction-categories">
-                <a href="libros_categorias/sci_fi.html" class="book">Sci-fi</a>
-                <a href="libros_categorias/misterio.html" class="book"> Misterio</a>
-                <a href="libros_categorias/terror.html" class="book">Terror</a>
+                <a href="{% url 'sci_fi' %}" class="book">Sci-fi</a>
+                <a href="{% url 'misterio' %}" class="book"> Misterio</a>
+                <a href="{% url 'terror' %}" class="book">Terror</a>
             </div>
             <div class="category-list" id="nonfiction-categories" style="display: none;">
-                <a href="libros_categorias/historia.html" class="book">Historia</a>
-                <a href="libros_categorias/biografia.html" class="book">Biografía</a>
+                <a href="{% url 'historia' %}" class="book">Historia</a>
+                <a href="{% url 'biografia' %}" class="book">Biografía</a>
             </div>
         </div>
 
