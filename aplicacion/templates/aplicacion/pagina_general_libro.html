@@ -16,36 +16,37 @@
   <!-- Navbar (sit on top) -->
   <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
-      <a href="index.html" class="w3-bar-item w3-button w3-wide efect">Entre Verbos</a>
-      <!-- Right-sided navbar links -->
-      <div class="w3-right w3-hide-small l-efect">
-        <a href="{% url 'index' %}" class="w3-bar-item w3-button">Inicio</a>
-                <a href="{% url 'tienda' %}" class="w3-bar-item w3-button"><i class="fa fa-th"></i> Tienda</a>
-                <a href="{% url 'carrito' %}" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> Carrito</a>
-        <a href="paginas_inicio_secion/Inicio_secion.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>
-          Iniciar Sesión</a>
-        <a href="usuario/user.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Usuario</a>
-      </div>
-      <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
-        onclick="w3_open()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-  </div>
+        <a href="index.html" class="w3-bar-item w3-button w3-wide efect">Entre Verbos</a>
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small l-efect">
+            <a href="{% url 'index' %}" class="w3-bar-item w3-button">Inicio</a>
+            <a href="{% url 'tienda' %}" class="w3-bar-item w3-button"><i class="fa fa-th"></i> Tienda</a>
+            <a href="{% url 'carrito' %}" class="w3-bar-item w3-button"><i class="fa fa-usd"></i>
+                Carrito</a>
+            <a href="{% url 'ini_sesion' %}" class="w3-bar-item w3-button"><i
+                    class="fa fa-envelope"></i> Iniciar Sesión</a>
+            <a href="{% url 'usuario' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Usuario</a>
+        </div>
+        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
-  <!-- Sidebar on small screens when clicking the menu icon -->
-  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+            onclick="w3_open()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
     style="display:none" id="mySidebar">
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Cerrar
-      ×</a>
-    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">Inicio</a>
-    <a href="tienda.html" onclick="w3_close()" class="w3-bar-item w3-button">Tienda</a>
-    <a href="pagina_carrito_general.html" onclick="w3_close()" class="w3-bar-item w3-button">Carrito</a>
-    <a href="paginas_inicio_secion/Inicio_secion.html" onclick="w3_close()" class="w3-bar-item w3-button">Iniciar
-      Sesión</a>
-    <a href="usuario/user.html" onclick="w3_close()" class="w3-bar-item w3-button">Usuario</a>
-  </nav>
+        ×</a>
+    <a href="{% url 'index' %}" onclick="w3_close()" class="w3-bar-item w3-button">Inicio</a>
+    <a href="{% url 'tienda' %}" onclick="w3_close()" class="w3-bar-item w3-button">Tienda</a>
+    <a href="{% url 'carrito' %}" onclick="w3_close()" class="w3-bar-item w3-button">Carrito</a>
+    <a href="{% url 'ini_sesion' %}" onclick="w3_close()" class="w3-bar-item w3-button">Iniciar Sesión</a>
+    <a href="{% url 'usuario' %}" onclick="w3_close()" class="w3-bar-item w3-button">Usuario</a>
+</nav>
 
   <!-- Page content -->
   <div class="w3-content w3-padding-16" style="max-width:1000px">
@@ -119,7 +120,8 @@
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="../js/menus.js"></script>
+  <script src="{% static 'aplicacion/js/menus.js' %}"></script>
+
   <script>
     window.onload = function () {
         desc();

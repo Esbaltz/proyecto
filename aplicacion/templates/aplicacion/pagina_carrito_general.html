@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/libs.css">
+    <link rel="stylesheet" href="{% static 'aplicacion/css/libs.css' %}">
 </head>
 
 <body>
@@ -24,9 +24,9 @@
                 <a href="{% url 'tienda' %}" class="w3-bar-item w3-button"><i class="fa fa-th"></i> Tienda</a>
                 <a href="{% url 'carrito' %}" class="w3-bar-item w3-button"><i class="fa fa-usd"></i>
                     Carrito</a>
-                <a href="paginas_inicio_secion/Inicio_secion.html" class="w3-bar-item w3-button"><i
+                <a href="{% url 'ini_sesion' %}" class="w3-bar-item w3-button"><i
                         class="fa fa-envelope"></i> Iniciar Sesión</a>
-                <a href="usuario/user.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Usuario</a>
+                <a href="{% url 'usuario' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Usuario</a>
             </div>
             <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
@@ -42,11 +42,11 @@
         style="display:none" id="mySidebar">
         <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Cerrar
             ×</a>
-        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">Inicio</a>
-        <a href="tienda.html" onclick="w3_close()" class="w3-bar-item w3-button">Tienda</a>
-        <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">Carrito</a>
-        <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">Iniciar Sesión</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">Usuario</a>
+        <a href="{% url 'index' %}" onclick="w3_close()" class="w3-bar-item w3-button">Inicio</a>
+        <a href="{% url 'tienda' %}" onclick="w3_close()" class="w3-bar-item w3-button">Tienda</a>
+        <a href="{% url 'carrito' %}" onclick="w3_close()" class="w3-bar-item w3-button">Carrito</a>
+        <a href="{% url 'ini_sesion' %}" onclick="w3_close()" class="w3-bar-item w3-button">Iniciar Sesión</a>
+        <a href="{% url 'usuario' %}" onclick="w3_close()" class="w3-bar-item w3-button">Usuario</a>
     </nav>
 
     <div class="w3-container" style="margin-left: autopx; margin-top: 75px;">

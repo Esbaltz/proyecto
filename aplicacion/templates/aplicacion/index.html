@@ -42,11 +42,11 @@
         style="display:none" id="mySidebar">
         <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Cerrar
             ×</a>
-        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">Inicio</a>
-        <a href="tienda.html" onclick="w3_close()" class="w3-bar-item w3-button">Tienda</a>
-        <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">Carrito</a>
-        <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">Iniciar Sesión</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">Usuario</a>
+        <a href="{% url 'index' %}" onclick="w3_close()" class="w3-bar-item w3-button">Inicio</a>
+        <a href="{% url 'tienda' %}" onclick="w3_close()" class="w3-bar-item w3-button">Tienda</a>
+        <a href="{% url 'carrito' %}" onclick="w3_close()" class="w3-bar-item w3-button">Carrito</a>
+        <a href="{% url 'ini_sesion' %}" onclick="w3_close()" class="w3-bar-item w3-button">Iniciar Sesión</a>
+        <a href="{% url 'usuario' %}" onclick="w3_close()" class="w3-bar-item w3-button">Usuario</a>
     </nav>
 
     <!-- Header with full-height image -->
@@ -150,7 +150,7 @@
                 Verbos</a></p>
     </footer>
 
-    <script src="../js/menus.js"></script>
+    <script src="{% static 'aplicacion/js/menus.js' %}"></script>
 
 </body>
 
