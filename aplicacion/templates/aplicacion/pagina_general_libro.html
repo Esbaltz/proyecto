@@ -79,14 +79,14 @@
     <!-- First Photo Grid-->
     <div class="w3-row-padding w3-center" id="food">
       <div class="w3-quarter">
-        <a href="pagina_general_libro.html" class="img-move">
-          <img src="../img/Autonomous_libro.jpg" alt="Sandwich" style="width:100%">
+        <a href="{% url 'libro' %}" class="img-move">
+          <img src="{% static 'aplicacion/img/Autonomous_libro.jpg' %}" alt="Autonomous_libro" style="width:100%">
         </a>
         <h3>Autonumus</h3>
         <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
       </div>
       <div class="w3-quarter">
-        <a href="pagina_general_libro.html" class="img-move">
+        <a href="{% url 'libro' %}" class="img-move">
           <img src="../img/El_hobit.jpg" alt="Steak" style="width:100%">
         </a>
         <h3>El hobbit</h3>
@@ -94,7 +94,7 @@
         </p>
       </div>
       <div class="w3-quarter">
-        <a href="pagina_general_libro.html" class="img-move">
+        <a href="{% url 'libro' %}" class="img-move">
           <img src="../img/historia2.png" alt="Cherries" style="width:100%">
         </a>
         <h3>Holly</h3>
@@ -102,7 +102,7 @@
         <p>What else?</p>
       </div>
       <div class="w3-quarter">
-        <a href="pagina_general_libro.html" class="img-move">
+        <a href="{% url 'libro' %}" class="img-move">
           <img src="../img/metro.jpg" alt="Pasta and Wine" style="width:100%">
         </a>
         <h3>Metro</h3>
