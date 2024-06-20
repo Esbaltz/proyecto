@@ -22,7 +22,7 @@
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
         <div class="w3-bar w3-white w3-card" id="myNavbar">
-            <a href="index.html" class="w3-bar-item w3-button w3-wide efect">Entre Verbos</a>
+            <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-wide efect">Entre Verbos</a>
             <!-- Right-sided navbar links -->
             <div class="w3-right w3-hide-small l-efect">
                 <a href="{% url 'index' %}" class="w3-bar-item w3-button">Inicio</a>
@@ -61,7 +61,7 @@
                 <div class="col"></div>
                 <div class="col-md">
                     <h2 class="text-center mb-4">Recuperar contraseña</h2>
-                    <form id="registroForm">
+                    <form id="registroForm" action="{% url 'ini_sesion' %}" method="get">
                         <div class="mb-3">
                             <i class="fa fa-user icon"></i>
                             <label for="nombreCuenta" class="form-label">Ingrese el nombre de la cuenta</label>

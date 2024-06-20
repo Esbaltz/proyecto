@@ -17,7 +17,7 @@
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
         <div class="w3-bar w3-white w3-card" id="myNavbar">
-            <a href="index.html" class="w3-bar-item w3-button w3-wide efect">Entre Verbos</a>
+            <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-wide efect">Entre Verbos</a>
             <!-- Right-sided navbar links -->
             <div class="w3-right w3-hide-small l-efect">
                 <a href="{% url 'index' %}" class="w3-bar-item w3-button">Inicio</a>
@@ -52,11 +52,11 @@
 
     <div class="row mt-5 p-4">
         <div class="col-4 card" style="width:400px">
-            <img class="card-img-top" src="../../img/user.jpeg" alt="Card image">
+            <img class="card-img-top" src="{% static 'aplicacion/img/user.jpeg' %}" alt="Card image">
             <div class="card-body text-center">
                 <h4 class="card-title">Jhon Doe</h4>
                 <p class="card-text">jhondoe5@gmail.com</p>
-                <a href="../paginas_inicio_secion/Cambio_de_contraseña.html" class="btn btn-primary">Modificar
+                <a href="{% url 'c_contra' %}" class="btn btn-primary">Modificar
                     sesión</a>
             </div>
         </div>
@@ -77,21 +77,21 @@
                         <td>J.R.R. Tolkien</td>
                         <td>13.900</td>
                         <td>Entregado</td>
-                        <td><a href="../pagina_general_libro.html" class="btn btn-primary">Ver compra</a></td>
+                        <td><a href="{% url 'libro' %}" class="btn btn-primary">Ver compra</a></td>
                     </tr>
                     <tr>
                         <td>Metro</td>
                         <td>Dmitry Glukhovsky</td>
                         <td>14.9000</td>
                         <td>Entregado</td>
-                        <td><a href="../pagina_general_libro.html" class="btn btn-primary">Ver compra</a></td>
+                        <td><a href="{% url 'libro' %}" class="btn btn-primary">Ver compra</a></td>
                     </tr>
                     <tr>
                         <td>Holly</td>
                         <td>Stephen King</td>
                         <td>12.900</td>
                         <td>En proceso</td>
-                        <td><a href="../pagina_general_libro.html" class="btn btn-primary">Ver compra</a></td>
+                        <td><a href="{% url 'libro' %}" class="btn btn-primary">Ver compra</a></td>
                     </tr>
                 </tbody>
             </table>
