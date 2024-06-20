@@ -55,7 +55,7 @@
             <span class="w3-jumbo w3-hide-small">Comienza tu viaje con Entre Verbos</span><br><br>
             <span class="w3-xxlarge w3-hide-large w3-hide-medium">Entre Verbos</span><br>
             <span class="w3-large">En Entre Verbos puedes encontrar todo los libros que quieras.</span>
-            <p><a href="tienda.html"
+            <p><a href="{% url 'tienda' %}"
                     class="w3-animate-left w3-button w3-white w3-padding-large w3-large w3-margin-top w3-hover-opacity-off cat">Revisa
                     nuestro catálogo</a></p>
         </div>
@@ -74,14 +74,14 @@
         <div class="w3-row-padding w3-padding-16 w3-center" id="food">
             <div class="w3-quarter">
                 <a href="{% url 'libro' %}" class="img-move">
-                    <img src="{% static 'aplicacion/img/Autonomous_libro.jpg' %}" alt="Sandwich" style="width:100%">
+                    <img src="{% static 'aplicacion/img/Autonomous_libro.jpg' %}" alt="Autonumus" style="width:100%">
                 </a>
                 <h3>Autonumus</h3>
                 <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
             </div>
             <div class="w3-quarter">
                 <a href="pagina_general_libro.html" class="img-move">
-                    <img src="../img/El_hobit.jpg" alt="Steak" style="width:100%">
+                    <img src="{% static 'aplicacion/img/El_hobit.jpg' %}" alt="El hobbit" style="width:100%"> 
                 </a>
                 <h3>El hobbit</h3>
                 <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.
@@ -89,7 +89,7 @@
             </div>
             <div class="w3-quarter">
                 <a href="pagina_general_libro.html" class="img-move">
-                    <img src="../img/Holly_stephen_king.jpg" alt="Cherries" style="width:100%">
+                    <img src="{% static 'aplicacion/img/Holly_stephen_king.jpg' %}" alt="Holly" style="width:100%"> 
                 </a>
                 <h3>Holly</h3>
                 <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
@@ -97,7 +97,7 @@
             </div>
             <div class="w3-quarter">
                 <a href="pagina_general_libro.html" class="img-move">
-                    <img src="../img/metro.jpg" alt="Pasta and Wine" style="width:100%">
+                    <img src="{% static 'aplicacion/img/metro.jpg' %}" alt="Pasta and Wine" style="width:100%"> 
                 </a>
                 <h3>Metro</h3>
                 <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
@@ -113,14 +113,14 @@
         <div class="w3-row-padding w3-padding-16 w3-center">
             <div class="w3-quarter">
                 <a href="pagina_general_libro.html" class="img-move">
-                    <img src="../img/historia2.png" alt="Popsicle" style="width:100%">
+                    <img src="{% static 'aplicacion/img/historia2.png' %}" alt="Historia" style="width:100%">
                 </a>
                 <h3>Breve historia del mundo</h3>
                 <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
             </div>
             <div class="w3-quarter">
                 <a href="pagina_general_libro.html" class="img-move">
-                    <img src="../img/metro.jpg" alt="Salmon" style="width:100%">
+                    <img src="{% static 'aplicacion/img/metro.jpg' %}" alt="Metro" style="width:100%">
                 </a>
                 <h3>Metro</h3>
                 <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.
@@ -128,14 +128,14 @@
             </div>
             <div class="w3-quarter">
                 <a href="pagina_general_libro.html" class="img-move">
-                    <img src="../img/Holly_stephen_king.jpg" alt="Sandwich" style="width:100%">
+                    <img src="{% static 'aplicacion/img/Holly_stephen_king.jpg' %}" alt="Holly" style="width:100%">
                 </a>
                 <h3>Holly</h3>
                 <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
             </div>
             <div class="w3-quarter">
                 <a href="pagina_general_libro.html" class="img-move">
-                    <img src="../img/El_hobit.jpg" alt="Croissant" style="width:100%">
+                    <img src="{% static 'aplicacion/img/El_hobit.jpg' %}" alt="El Hobbit" style="width:100%">
                 </a>
                 <h3>El hobbit</h3>
                 <p>Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
@@ -146,7 +146,7 @@
     <!-- Footer -->
     <footer class="w3-center w3-black w3-padding-64 foot">
         <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Al inicio</a>
-        <p>Hecho por <a href="index.html" title="Regresar al inicio" target="_blank" class="w3-hover-text-green">Entre
+        <p>Hecho por <a href="{% url 'index' %}" title="Regresar al inicio" target="_blank" class="w3-hover-text-green">Entre
                 Verbos</a></p>
     </footer>
 

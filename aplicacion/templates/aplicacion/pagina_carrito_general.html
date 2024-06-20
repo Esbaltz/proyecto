@@ -61,24 +61,24 @@
                 <td><strong>ACCIONES</strong></td>
             </tr>
             <tr>
-                <td><img src="../img/Autonomous_libro.jpg" alt="" width="70"></td>
-                <td><a href="../paginas/pagina_general_libro.html" style="text-decoration: underline;">Autonumus</a></td>
+                <td><img src="{% static 'aplicacion/img/Autonomous_libro.jpg' %}" alt="" width="70"></td>
+                <td><a href="{% url 'libro' %}" style="text-decoration: underline;">Autonumus</a></td>
                 <td>2</td>
                 <td>$7.990</td>
                 <td>$15.980</td>
                 <td><button>Eliminar</button></td>
             </tr>
             <tr>
-                <td><img src="../img/Un camino hacia la libertad.jpg" alt="" width="70"></td>
-                <td><a href="../paginas/pagina_general_libro.html" style="text-decoration: underline;">El largo camino hacia la libertad</a></td>
+                <td><img src="{% static 'aplicacion/img/Un camino hacia la libertad.jpg' %}" alt="" width="70"></td>
+                <td><a href="{% url 'libro' %}" style="text-decoration: underline;">El largo camino hacia la libertad</a></td>
                 <td>1</td>
                 <td>$6.990</td>
                 <td>$6.990</td>
                 <td><button>Eliminar</button></td>
             </tr>
             <tr>
-                <td><img src="../img/Holly_stephen_king.jpg" alt="" width="70"></td>
-                <td><a href="../paginas/pagina_general_libro.html" style="text-decoration: underline;">Holly</a></td>
+                <td><img src="{% static 'aplicacion/img/Holly_stephen_king.jpg' %}" alt="" width="70"></td>
+                <td><a href="{% url 'libro' %}" style="text-decoration: underline;">Holly</a></td>
                 <td>1</td>
                 <td>$12.990</td>
                 <td>$12.990</td>
@@ -87,7 +87,7 @@
         </table>
         <br>
         <div id="total">Total: $35.960</div>
-        <a href="pagina_domicilio_y_pagar.html">
+        <a href="{% url 'domicilio' %}">
             <button class="w3-button w3-dark-grey"></i> COMPRAR  </button>
         </a>
     </div>
