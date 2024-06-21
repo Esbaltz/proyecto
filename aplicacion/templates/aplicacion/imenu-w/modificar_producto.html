@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="../css/libs.css">
+    <link rel="stylesheet" href="{% static 'aplicacion/css/libs.css' %}">
 </head>
 
 <body class="w3-light-grey">
@@ -19,14 +20,15 @@
     <div class="w3-bar w3-black w3-large" style="z-index:4;">
         <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
             onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-        <a href="../paginas/index.html" class="w3-bar-item w3-right">ENTRE VERBOS</a>
+        <a href="{% url 'index' %}" class="w3-bar-item w3-right">ENTRE VERBOS</a>
     </div>
 
     <!-- Sidebar/menu -->
-    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px; margin-top:43px; top: 0;"
+        id="mySidebar"><br>
         <div class="w3-container w3-row">
             <div class="w3-col m2 text-center" style="margin-right: 43px;">
-                <img class="w3-circle" src="../img/inspirado.jpeg" style="width:76px;height:76px">
+                <img class="w3-circle" src="{% static 'aplicacion/img/inspirado.jpeg' %}" style="width:76px;height:76px">
             </div>
             <div class="w3-col s8 w3-bar">
                 <span>Welcome, <strong>ADMIN</strong></span><br>
@@ -43,19 +45,19 @@
         <div class="w3-bar-block">
             <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
                 onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-            <a href="crear_cuenta.html" class="w3-bar-item w3-button w3-padding tr"><i class="fa fa-user fa-fw"></i> 
+            <a href="{% url 'crear' %}" class="w3-bar-item w3-button w3-padding tr"><i class="fa fa-user fa-fw"></i> 
                 Crear
                 Cuenta</a>
-            <a href="agregar_producto.html" class="w3-bar-item w3-button w3-padding tr"><i
+            <a href="{% url 'agregar' %}" class="w3-bar-item w3-button w3-padding tr"><i
                     class="fa fa-solid fa-book fa-fw"></i>  Agregar
                 Producto</a>
-            <a href="modificar_producto.html" class="w3-bar-item w3-button w3-padding w3-blue tr"><i
+            <a href="{% url 'modificar' %}" class="w3-bar-item w3-button w3-padding w3-blue tr"><i
                     class="fa fa-pen-nib fa-fw"></i>   Modificar
                 Producto</a>
-            <a href="eliminar_producto.html" class="w3-bar-item w3-button w3-padding tr"><i
+            <a href="{% url 'eliminar' %}" class="w3-bar-item w3-button w3-padding tr"><i
                     class="fa fa-solid fa-eraser fa-fw"></i> 
                 Eliminar Producto</a>
-            <a href="buscar_producto.html" class="w3-bar-item w3-button w3-padding tr"><i
+            <a href="{% url 'buscar' %}" class="w3-bar-item w3-button w3-padding tr"><i
                     class="fa fas fa-search fa-fw"></i>  Buscar
                 Producto</a>
         </div>
@@ -63,9 +65,9 @@
             <h5><strong>Gestión de usuarios</strong></h5>
         </div>
         <div class="w3-bar-block">
-            <a href="pedidos.html" class="w3-bar-item w3-button w3-padding tr"><i
+            <a href="{% url 'pedidos' %}" class="w3-bar-item w3-button w3-padding tr"><i
                     class="fa fas fa-people-carry fa-fw"></i>  Ver pedidos</a>
-            <a href="usuarios.html" class="w3-bar-item w3-button w3-padding tr"><i class="fa fas fa-users fa-fw"></i> 
+            <a href="{% url 'usuarios' %}" class="w3-bar-item w3-button w3-padding tr"><i class="fa fas fa-users fa-fw"></i> 
                 Ver usuarios</a>
         </div>
     </nav>
@@ -113,8 +115,8 @@
     <!-- End page content -->
     </div>
 
-    <script src="../js/menus.js"></script>
-    <script src="../js/form.js"></script>
+    <script src="{% static 'aplicacion/js/menus.js' %}"></script>
+    <script src="{% static 'aplicacion/js/form.js' %}"></script>
     <script>
         window.onload = function () {
             mod();
