@@ -17,7 +17,7 @@
 <body class="w3-light-grey">
 
     <!-- Top container -->
-    <div class="w3-bar w3-black w3-large" style="z-index:4;">
+    <div class="w3-bar w3-black w3-large w3-top" style="z-index:4;">
         <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
             onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
         <a href="{% url 'index' %}" class="w3-bar-item w3-right">ENTRE VERBOS</a>
@@ -90,31 +90,31 @@
                                 <td><strong>USUARIO</strong></td>
                             </tr>
                             <tr>
-                                <td><a href="../paginas/pagina_general_libro.html">Holly</a></td>
+                                <td><a href="{% url 'libro' %}">Holly</a></td>
                                 <td>29/04/24</td>
                                 <td>En camino</td>
                                 <td><a href="{% url 'usuario_gnral' %}">pablitogamer123@gmail.com</a></td>
                             </tr>
                             <tr>
-                                <td><a href="../paginas/pagina_general_libro.html">Autonumus</a></td>
+                                <td><a href="{% url 'libro' %}">Autonumus</a></td>
                                 <td>30/04/24</td>
                                 <td>En camino</td>
                                 <td><a href="{% url 'usuario_gnral' %}">angff09@gmail.com</a></td>
                             </tr>
                             <tr>
-                                <td><a href="../paginas/pagina_general_libro.html">Metro</a></td>
+                                <td><a href="{% url 'libro' %}">Metro</a></td>
                                 <td>01/05/24</td>
                                 <td>En camino</td>
                                 <td><a href="{% url 'usuario_gnral' %}">angff09@gmail.com</a></td>
                             </tr>
                             <tr>
-                                <td><a href="../paginas/pagina_general_libro.html">El Hobbit</a></td>
+                                <td><a href="{% url 'libro' %}">El Hobbit</a></td>
                                 <td>01/05/24</td>
                                 <td>Saliendo</td>
                                 <td><a href="{% url 'usuario_gnral' %}">raulmed02@gmail.com</a></td>
                             </tr>
                             <tr>
-                                <td><a href="../paginas/pagina_general_libro.html">Metro</a></td>
+                                <td><a href="{% url 'libro' %}">Metro</a></td>
                                 <td>02/05/24</td>
                                 <td>Saliendo</td>
                                 <td><a href="{% url 'usuario_gnral' %}">mainjhin4@gmail.com</a></td>

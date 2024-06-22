@@ -17,7 +17,7 @@
 <body class="w3-light-grey">
 
     <!-- Top container -->
-    <div class="w3-bar w3-black w3-large" style="z-index:4;">
+    <div class="w3-bar w3-black w3-large w3-top" style="z-index:4;">
         <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
             onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
         <a href="{% url 'index' %}" class="w3-bar-item w3-right">ENTRE VERBOS</a>
@@ -90,25 +90,25 @@
                     <td>Pablo Medina</td>
                     <td>3</td>
                     <td>pablitogamer123@gmail.com</td>
-                    <td><a href="usuario_gnral.html">VER</a></td>
+                    <td><a href="{% url 'usuario_gnral' %}">VER</a></td>
                 </tr>
                 <tr>
                     <td>Angela Fuenzalida</td>
                     <td>2</td>
                     <td>angff09@gmail.com</td>
-                    <td><a href="usuario_gnral.html">VER</a></td>
+                    <td><a href="{% url 'usuario_gnral' %}">VER</a></td>
                 </tr>
                 <tr>
                     <td>Raul Toledo</td>
                     <td>3</td>
                     <td>rault02@gmail.com</td>
-                    <td><a href="usuario_gnral.html">VER</a></td>
+                    <td><a href="{% url 'usuario_gnral' %}">VER</a></td>
                 </tr>
                 <tr>
                     <td>Matias Gonzales</td>
                     <td>1</td>
                     <td>mainjhin4@gmail.com</td>
-                    <td><a href="usuario_gnral.html">VER</a></td>
+                    <td><a href="{% url 'usuario_gnral' %}">VER</a></td>
                 </tr>
             </table><br>
             <a href="{% url 'pedidos' %}">
