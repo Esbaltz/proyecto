@@ -5,22 +5,38 @@ function form1() {
       var nombre_libr = document.getElementById("nombre_libr").value;
       var isbn = document.getElementById("isbn").value;
       var confirm_isbn = document.getElementById("confirm_isbn").value;
+      var autor = document.getElementById("autor").value;
+      var genero = document.getElementById("genero").value;
       var valor_libr = document.getElementById("valor_libr").value;
       var imagen = document.querySelector('input[type="file"]').files[0];
 
-      var nombre_libro_ingre_error = document.getElementById(
-        "nombre_libro_ingre_error"
-      );
+      var nombre_libro_ingre_error = document.getElementById("nombre_libro_ingre_error");
       var nombre_isbn_error_1 = document.getElementById("nombre_isbn_error_1");
       var nombre_isbn_error = document.getElementById("nombre_isbn_error");
+      var autor_error = document.getElementById("autor_error");
+      var genero_error = document.getElementById("genero_error");
       var valor_libro_error = document.getElementById("valor_libro_error");
       var imagen_error = document.getElementById("imagen_error");
 
       nombre_libro_ingre_error.innerHTML = "";
       nombre_isbn_error_1.innerHTML = "";
       nombre_isbn_error.innerHTML = "";
+      autor_error.innerHTML = "";
+      genero_error.innerHTML = "";
       valor_libro_error.innerHTML = "";
       imagen_error.innerHTML = "";
+
+      if (autor.length < 3 || autor.length > 30) {
+        autor_error.innerHTML =
+          "Ingrese un autor válido";
+        event.preventDefault();
+      }
+
+      if (genero.length < 3 || genero.length > 30) {
+        genero_error.innerHTML =
+          "Ingrese un género válido";
+        event.preventDefault();
+      }
 
       if (nombre_libr.length < 3 || nombre_libr.length > 60) {
         nombre_libro_ingre_error.innerHTML =
@@ -162,27 +178,35 @@ function mod() {
     .getElementById("agregar_pro_form")
     .addEventListener("submit", function (event) {
       var nombre_libr = document.getElementById("nombre_libr").value;
-      var isbn = document.getElementById("isbn").value;
+      var autor = document.getElementById("autor").value;
+      var genero = document.getElementById("genero").value;
       var valor_libr = document.getElementById("valor_libr").value;
 
-      var nombre_libro_ingre_error = document.getElementById(
-        "nombre_libro_ingre_error"
-      );
-      var nombre_isbn_error_1 = document.getElementById("nombre_isbn_error_1");
+      var nombre_libro_ingre_error = document.getElementById("nombre_libro_ingre_error");
+      var autor_error = document.getElementById("autor_error");
+      var genero_error = document.getElementById("genero_error");
       var valor_libro_error = document.getElementById("valor_libro_error");
 
       nombre_libro_ingre_error.innerHTML = "";
-      nombre_isbn_error_1.innerHTML = "";
+      autor_error.innerHTML = "";
+      genero_error.innerHTML = "";
       valor_libro_error.innerHTML = "";
+
+      if (autor.length < 3 || autor.length > 30) {
+        autor_error.innerHTML =
+          "Ingrese un autor válido";
+        event.preventDefault();
+      }
+
+      if (genero.length < 3 || genero.length > 30) {
+        genero_error.innerHTML =
+          "Ingrese un género válido";
+        event.preventDefault();
+      }
 
       if (nombre_libr.length < 3 || nombre_libr.length > 60) {
         nombre_libro_ingre_error.innerHTML =
           "El nombre del libro ingresado tiene que tener un paramentro minimo de 3 caracteres o un maximo de 60.";
-        event.preventDefault();
-      }
-      if (isbn.length !== 13) {
-        nombre_isbn_error_1.innerHTML =
-          "Los datos de ISBN no tiene el largo de 13 caracteres.";
         event.preventDefault();
       }
 

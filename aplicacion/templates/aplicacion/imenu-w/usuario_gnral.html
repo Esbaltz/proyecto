@@ -17,7 +17,7 @@
 <body class="w3-light-grey">
 
     <!-- Top container -->
-    <div class="w3-bar w3-black w3-large" style="z-index:4;">
+    <div class="w3-bar w3-black w3-large w3-top" style="z-index:4;">
         <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
             onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
         <a href="{% url 'index' %}" class="w3-bar-item w3-right">ENTRE VERBOS</a>
@@ -78,7 +78,7 @@
 
     <div class="w3-main" style="margin-left:300px;margin-top:43px; margin-bottom: 20px;">
         <div class="w3-container">
-            <div class="w3-row">
+            <div class="w3-row" style="margin-top:40px">
                 <div class="w3-col m2 text-center">
                     <img class="w3-circle" src="{% static 'aplicacion/img/cliente.PNG' %}" style="width:96px;height:96px">
                 </div>
@@ -116,7 +116,7 @@
                     <td>En camino</td>
                 </tr>
             </table><br>
-            <a href="usuarios.html">
+            <a href="{% url 'usuarios' %}">
                 <button class="w3-button w3-dark-grey"><i class="fa-arrow-left fa"></i> Atrás  </button>
             </a>
         </div>
