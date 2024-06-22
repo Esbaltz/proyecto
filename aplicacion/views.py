@@ -1,11 +1,15 @@
 from django.shortcuts import render
-
+from .models import Libro
 # Create your views here.
 
 # Vistas principales 
 def index(request):
-    print(request)
-    return render(request, 'aplicacion/index.html')
+
+    libro = Libro.objects.all()
+    data = {
+        'libro': libro
+    }
+    return render(request, 'aplicacion/index.html', data)
 
 def tienda(request):
     print(request)
