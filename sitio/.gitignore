@@ -1,2 +1,3 @@
-/__pycache__
-/aplicacion/__pycache__
+aplicacion/__pycache__/
+sitio/__pycache__/
+app_orm/migrations/__pycache__/
