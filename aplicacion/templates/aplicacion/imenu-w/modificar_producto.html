@@ -92,9 +92,23 @@
                         <div id="nombre_libro_ingre_error" class="error-message"></div>
                     </div>
                     <div class="mb-3 mt-3">
-                        <label for="isbn" class="form-label">ISBN</label>
-                        <input type="text" class="form-control f-c" id="isbn" placeholder="Introducir ISBN" required>
-                        <div id="nombre_isbn_error_1" class="error-message"></div>
+                        <label for="autor" class="form-label">Nombre del autor</label>
+                        <input type="text" class="form-control f-c" id="autor" placeholder="Ingrese nombre del autor"
+                            required>
+                        <div id="autor_error" class="error-message"></div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="genero" class="form-label">Género del libro</label>
+                        <select class="form-select" id="genero">
+                            <option value="" selected disabled>Seleccione una género</option>
+                            <option value="sci-fi">sci-fi</option>
+                            <option value="misterio">misterio</option>
+                            <option value="terror">terror</option>
+                            <option value="historia">historia</option>
+                            <option value="biografia">biografia</option>
+                            <option value="otro">otro</option>
+                        </select>
+                        <div id="genero_error" class="error-message"></div>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="valor_libr" class="form-label">Valor del libro</label>
