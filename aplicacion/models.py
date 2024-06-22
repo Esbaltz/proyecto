@@ -58,8 +58,8 @@ class Detalle_pedido(models.Model):
 
 #no se si dejar la entidad oferta, pero como esta en la pagina, los determinados libros con descuento estan separados de los normales en la pagina general
 #class libro_oferta(models.Model):
-   # d#escuento = models.DecimalField(max_digits=10, decimal_places=2)
-   # def __str__(self):
+    # d#escuento = models.DecimalField(max_digits=10, decimal_places=2)
+    # def __str__(self):
     #    return self.libro
     
 
