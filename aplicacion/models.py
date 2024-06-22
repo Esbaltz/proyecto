@@ -2,6 +2,8 @@ from django.db import models
 from .listas import TIPO_GENERO,SUBTIPO_GENERO,TIPO_ESTADO
 # Create your models here.
 from django.core.validators import MinValueValidator
+from datetime import date
+
 # Create your models here.
 class Libro(models.Model):
     #no se si dejar el isbn como clave primaria o ponerle un id para diferenciarlos
@@ -10,9 +12,9 @@ class Libro(models.Model):
     nombre=models.CharField(max_length=50, null=False)#falta el autor en el html
     foto=models.ImageField("Imagen",upload_to='libros',null=True)
     precio=models.IntegerField(validators=[MinValueValidator(0)])
-    best_seler= models.BooleanField()#Falta agregar en el html el boton deslizante de si o no en el html
+    best_seler= models.BooleanField(default=False)#Falta agregar en el html el boton deslizante de si o no en el html
 
-    tipo=models.CharField(max_length=30, choices=TIPO_GENERO)
+    tipo=models.CharField(max_length=30, choices=TIPO_GENERO, default='Sin tipo')
     subtipo=models.CharField(max_length=40, choices=SUBTIPO_GENERO, default='Sin subtipo')
     def __str__(self):
         return self.nombre
@@ -20,7 +22,7 @@ class Libro(models.Model):
     
 class Usuario(models.Model):
     id=models.AutoField(primary_key=True)
-    direccion=models.CharField(max_length=60, null=False)#poner un minimo de 3 como en el js
+    direccion=models.CharField(max_length=60, null=False, default='no hay direccion')#poner un minimo de 3 como en el js
     correo=models.CharField(max_length=100, null=False)
     contraseña=models.CharField(max_length=100, null=False)
 
@@ -40,9 +42,9 @@ class Pedido(models.Model):
     comprador_carrito=models.ForeignKey(Usuario, on_delete=models.PROTECT)
     total = models.DecimalField(max_digits=10, decimal_places=2)
     #agregar fecha
-    fecha_pedido = models.DateField()
+    fecha_pedido = models.DateField(default=date(2024, 1, 1))
     #agregar estado
-    estado_pedido=models.CharField(max_length=40, choices=TIPO_ESTADO)#NO ESTOY SEGURO SI VA ACA
+    estado_pedido=models.CharField(max_length=40, choices=TIPO_ESTADO,default='En proceso' )#NO ESTOY SEGURO SI VA ACA  
 
     def __str__(self):
         return self.numero_pedido
