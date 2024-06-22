@@ -1,6 +1,7 @@
 TIPO_GENERO={
     ("Ficción","No_Ficción"),
     ("No Ficción", "No Ficción"),
+    ("Sin tipo", "Sin tipo"),
 }
 
 SUBTIPO_GENERO = {
