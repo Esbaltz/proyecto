@@ -84,37 +84,18 @@
 
         <!-- First Photo Grid-->
         <div class="w3-row-padding w3-padding-16 w3-center" id="food">
-            <div class="w3-quarter">
-                <a href="{% url 'libro' %}" class="img-move">
-                    <img src="{% static 'aplicacion/img/Autonomous_libro.jpg' %}" alt="Autonumus" style="width:100%">
-                </a>
-                <h3>Autonumus</h3>
-                <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+            {% for p in libro %}
+                {% if p.tipo == "Ficción"  and p.subtipo == "Misterio" %}
+                    <div class="w3-quarter">
+                        <a href="{% url 'libro' %}" class="img-move">
+                        <img src="{% static 'aplicacion/img/Autonomous_libro.jpg' %}" alt="Autonumus" style="width:100%">
+                        </a>
+                    <h3>{{ p.nombre }}</h3>
+                    <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
             </div>
-            <div class="w3-quarter">
-                <a href="{% url 'libro' %}" class="img-move">
-                    <img src="{% static 'aplicacion/img/El_hobit.jpg' %}" alt="El hobbit" style="width:100%"> 
-                </a>
-                <h3>El hobbit</h3>
-                <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.
-                </p>
-            </div>
-            <div class="w3-quarter">
-                <a href="{% url 'libro' %}" class="img-move">
-                    <img src="{% static 'aplicacion/img/Holly_stephen_king.jpg' %}" alt="Holly" style="width:100%"> 
-                </a>
-                <h3>Holly</h3>
-                <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-                <p>What else?</p>
-            </div>
-            <div class="w3-quarter">
-                <a href="{% url 'libro' %}" class="img-move">
-                    <img src="{% static 'aplicacion/img/metro.jpg' %}" alt="Pasta and Wine" style="width:100%"> 
-                </a>
-                <h3>Metro</h3>
-                <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-            </div>
-        </div>
 
         <!-- About Section -->
         <div class="w3-container" style="padding-top: 50px;" id="about">

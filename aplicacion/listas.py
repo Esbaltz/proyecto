@@ -1,6 +1,6 @@
 TIPO_GENERO={
-    ("Ficción","No_Ficción"),
-    ("No Ficción", "No Ficción"),
+    ("Ficción","Ficción"),
+    ("No_Ficción", "No_Ficción"),
     ("Sin tipo", "Sin tipo"),
 }
 

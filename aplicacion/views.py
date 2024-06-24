@@ -12,8 +12,12 @@ def index(request):
     return render(request, 'aplicacion/index.html', data)
 
 def tienda(request):
-    print(request)
-    return render(request, 'aplicacion/tienda.html')
+    
+    libro = Libro.objects.all()
+    data = {
+        'libro': libro
+    }
+    return render(request, 'aplicacion/tienda.html', data)
 
 def gral_libro(request):
     return render(request, 'aplicacion/pagina_general_libro.html')
@@ -43,19 +47,39 @@ def reg_user(request):
 
 #Vistas de las categorias de libros
 def biografia(request):
-    return render(request, 'aplicacion/libros_categorias/biografia.html')
+    libro = Libro.objects.all()
+    data = {
+        'libro': libro
+    }
+    return render(request, 'aplicacion/libros_categorias/biografia.html', data)
 
 def historia(request):
-    return render(request, 'aplicacion/libros_categorias/historia.html')
+    libro = Libro.objects.all()
+    data = {
+        'libro': libro
+    }
+    return render(request, 'aplicacion/libros_categorias/historia.html', data)
 
 def misterio(request):
-    return render(request, 'aplicacion/libros_categorias/misterio.html')
+    libro = Libro.objects.all()
+    data = {
+        'libro': libro
+    }
+    return render(request, 'aplicacion/libros_categorias/misterio.html', data)
 
 def sci_fi(request):
-    return render(request, 'aplicacion/libros_categorias/sci_fi.html')
+    libro = Libro.objects.all()
+    data = {
+        'libro': libro
+    }
+    return render(request, 'aplicacion/libros_categorias/sci_fi.html', data)
 
 def terror(request):
-    return render(request, 'aplicacion/libros_categorias/terror.html')
+    libro = Libro.objects.all()
+    data = {
+        'libro': libro
+    }
+    return render(request, 'aplicacion/libros_categorias/terror.html', data)
 
 #Vistas admin
 def agregar(request):

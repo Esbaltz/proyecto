@@ -9,7 +9,7 @@ class Libro(models.Model):
     #no se si dejar el isbn como clave primaria o ponerle un id para diferenciarlos
     isbn=models.CharField(max_length=10, primary_key=True, null=False)
     nombre=models.CharField(max_length=50, null=False)
-    nombre=models.CharField(max_length=50, null=False)#falta el autor en el html
+    nombre_autor=models.CharField(max_length=50, null=False, default='no posee autor')#falta el autor en el html
     foto=models.ImageField("Imagen",upload_to='libros',null=True)
     precio=models.IntegerField(validators=[MinValueValidator(0)])
     best_seler= models.BooleanField(default=False)#Falta agregar en el html el boton deslizante de si o no en el html
