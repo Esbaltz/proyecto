@@ -90,7 +90,9 @@
                 {% if p.best_seler and p.tipo == "Ficción" %} 
                     <div class="w3-quarter">
                         <a href="{% url 'libro' %}" class="img-move">
-                        <img src="{% static 'aplicacion/img/Autonomous_libro.jpg' %}" alt="Autonumus" style="width:100%">
+                        {% if p.foto %}
+                        <img src="{{ p.foto.url }}" alt="Autonumus" style="width:100%">
+                        {% endif %}
                         </a>
                     <h3>{{ p.nombre }}</h3>
                     <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
