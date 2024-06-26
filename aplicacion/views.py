@@ -31,18 +31,8 @@ def gral_libro(request):
 def inf_pago(request):
     return render(request, 'aplicacion/inf_pago.html')
 
-@login_required
 def carrito(request):
-    usuario = request.user
-
-    carrito_usuario = Carrito.objects.filter(comprador_carrito=usuario)
-    total_carrito = sum(item.libro.precio * item.cantidad for item in carrito_usuario)
-
-    data = {
-        'carrito': carrito_usuario,
-        'total_carrito': total_carrito,
-    }
-    return render(request, 'aplicacion/pagina_carrito_general.html', data)
+    return render(request, 'aplicacion/pagina_carrito_general.html')
 
 def agregar_al_carrito(request, libro_id):
     libro = get_object_or_404(Libro, id=libro_id)
