@@ -31,32 +31,32 @@ class Usuario(models.Model):
 
 
 class Carrito(models.Model):
-    comprador_carrito=models.OneToOneField(Usuario, on_delete=models.PROTECT)
-    libro=models.ForeignKey(Libro, on_delete=models.PROTECT)
-    cantidad = models.PositiveIntegerField()
+    comprador_carrito = models.OneToOneField(Usuario, on_delete=models.CASCADE)
+    libro = models.ForeignKey(Libro, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)  # Asegúrate de tener un valor por defecto
+
     def __str__(self):
-        return self.cantidad
+        return f"{self.comprador_carrito.correo} - {self.libro.nombre} - {self.cantidad}"
 
 class Pedido(models.Model):
-    numero_pedido=models.AutoField(primary_key=True)
-    comprador_carrito=models.ForeignKey(Usuario, on_delete=models.PROTECT)
+    numero_pedido = models.AutoField(primary_key=True)
+    comprador_pedido = models.ForeignKey(Usuario, on_delete=models.CASCADE, default=1)  # Aquí el 1 sería el ID de un usuario predeterminado o según tu lógica
     total = models.DecimalField(max_digits=10, decimal_places=2)
-    #agregar fecha
-    fecha_pedido = models.DateField(default=date(2024, 1, 1))
-    #agregar estado
-    estado_pedido=models.CharField(max_length=40, choices=TIPO_ESTADO,default='En proceso' )#NO ESTOY SEGURO SI VA ACA  
+    fecha_pedido = models.DateField(default=date.today)
+    estado_pedido = models.CharField(max_length=40, choices=TIPO_ESTADO, default='En proceso')
 
     def __str__(self):
-        return self.numero_pedido
+        return f"Pedido #{self.numero_pedido} - {self.comprador_pedido.correo}"
 
-class Detalle_pedido(models.Model):
+
+class DetallePedido(models.Model):
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Libro, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField()
     precio_unitario = models.DecimalField(max_digits=10, decimal_places=2)
-    pedido =models.ForeignKey(Pedido, on_delete=models.PROTECT)
-    producto =models.ForeignKey(Libro, on_delete=models.PROTECT)
-    cantidad_un_producto = models.PositiveIntegerField()
 
     def __str__(self):
-        return self.creado_fecha
+        return f"{self.pedido} - {self.producto} - {self.cantidad}"
 
 #no se si dejar la entidad oferta, pero como esta en la pagina, los determinados libros con descuento estan separados de los normales en la pagina general
 #class libro_oferta(models.Model):

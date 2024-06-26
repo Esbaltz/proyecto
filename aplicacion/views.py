@@ -1,7 +1,7 @@
-from django.shortcuts import render
-from .models import Libro
-from .forms import Agregar_libroForm
-# Create your views here.
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Carrito, Libro, Usuario
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 # Vistas principales 
 def index(request):
@@ -27,7 +27,38 @@ def inf_pago(request):
     return render(request, 'aplicacion/inf_pago.html')
 
 def carrito(request):
-    return render(request, 'aplicacion/pagina_carrito_general.html')
+    usuario = request.user
+    if not isinstance(usuario, Usuario):
+        # Manejar el caso cuando `request.user` no es un Usuario válido
+        # Puedes redirigir a otra página o mostrar un mensaje de error
+        return HttpResponse("Usuario no válido")
+
+    carrito_usuario = Carrito.objects.filter(comprador_carrito=usuario)
+    total_carrito = sum(item.libro.precio * item.cantidad for item in carrito_usuario)
+
+    data = {
+        'carrito': carrito_usuario,
+        'total_carrito': total_carrito,
+    }
+    return render(request, 'aplicacion/pagina_carrito_general.html', data)
+
+def agregar_al_carrito(request, libro_id):
+    libro = get_object_or_404(Libro, id=libro_id)
+    usuario = request.user  # Obtener el usuario actual, ajusta según tu autenticación
+
+    # Verificar si ya existe el libro en el carrito del usuario
+    carrito, created = Carrito.objects.get_or_create(comprador_carrito=usuario, libro=libro)
+
+    if not created:
+        carrito.cantidad += 1
+        carrito.save()
+
+    return redirect('carrito')  
+
+def eliminar_del_carrito(request, carrito_id):
+    carrito = get_object_or_404(Carrito, id=carrito_id)
+    carrito.delete()
+    return redirect('carrito') 
 
 def domicilio(request):
     return render(request, 'aplicacion/pagina_domicilio_y_pagar.html')
@@ -41,10 +72,30 @@ def c_contra(request):
     return render(request, 'aplicacion/paginas_inicio_secion/Cambio_de_contraseña.html')
 
 def ini_sesion(request):
+    if request.method == 'POST':
+        nombre_cuenta = request.POST['nombreCuenta']
+        contraseña = request.POST['password']
+        user = authenticate(request, username=nombre_cuenta, password=contraseña)
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+        else:
+            messages.error(request, 'Nombre de cuenta o contraseña incorrectos.')
     return render(request, 'aplicacion/paginas_inicio_secion/Inicio_secion.html')
 
 def reg_user(request):
-    return render(request, 'aplicacion/paginas_inicio_secion/Registro_usuario.html')
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'¡Cuenta creada para {username}!')
+            return redirect('ini_sesion')
+    else:
+        form = UserCreationForm()
+    return render(request, 'aplicacion/paginas_inicio_secion/Registro_usuario.html', {'form': form})
+
+# Vistas de las categorías de libros
 
 #Vistas de las categorias de libros
 def biografia(request):
@@ -84,20 +135,7 @@ def terror(request):
 
 #Vistas admin
 def agregar(request):
-    mensaje = ""
-    if request.method == 'POST':
-        formulario = Agregar_libroForm(request.POST, request.FILES)
-        if formulario.is_valid():
-            formulario.save()
-            mensaje = "Libro agregado con éxito"
-            # Puedes añadir más lógica aquí después de guardar el formulario
-            #hacer en el form con el widyet
-        else:
-            mensaje = "Ha ocurrido un error. Verifica los datos ingresados."
-            # Si el formulario no es válido, puedes manejar los errores aquí
-    formulario = Agregar_libroForm()
-        # Puedes enviar más datos al contexto si es necesario
-    return render(request, 'aplicacion/imenu-w/agregar_producto.html', {'form': formulario, 'mensaje': mensaje})
+    return render(request, 'aplicacion/imenu-w/agregar_producto.html')
 
 def buscar(request):
     return render(request, 'aplicacion/imenu-w/buscar_producto.html')

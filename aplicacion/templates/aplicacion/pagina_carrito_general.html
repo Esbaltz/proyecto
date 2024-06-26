@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'aplicacion/css/libs.css' %}">
+    
 </head>
 
 <body>
@@ -60,39 +61,25 @@
                 <td><strong>SUBTOTAL</strong></td>
                 <td><strong>ACCIONES</strong></td>
             </tr>
+            {% for item in carrito %}
             <tr>
-                <td><img src="{% static 'aplicacion/img/Autonomous_libro.jpg' %}" alt="" width="70"></td>
-                <td><a href="{% url 'libro' %}" style="text-decoration: underline;">Autonumus</a></td>
-                <td>2</td>
-                <td>$7.990</td>
-                <td>$15.980</td>
-                <td><button>Eliminar</button></td>
+                <td><img src="{{ item.libro.imagen.url }}" alt="" width="70"></td>
+                <td><a href="{% url 'libro' %}" style="text-decoration: underline;">{{ item.libro.titulo }}</a></td>
+                <td>{{ item.cantidad }}</td>
+                <td>${{ item.libro.precio }}</td>
+                <td>${{ item.libro.precio|mul:item.cantidad }}</td>
+                <td><a href="{% url 'eliminar_del_carrito' item.id %}"><button>Eliminar</button></a></td>
             </tr>
-            <tr>
-                <td><img src="{% static 'aplicacion/img/Un camino hacia la libertad.jpg' %}" alt="" width="70"></td>
-                <td><a href="{% url 'libro' %}" style="text-decoration: underline;">El largo camino hacia la libertad</a></td>
-                <td>1</td>
-                <td>$6.990</td>
-                <td>$6.990</td>
-                <td><button>Eliminar</button></td>
-            </tr>
-            <tr>
-                <td><img src="{% static 'aplicacion/img/Holly_stephen_king.jpg' %}" alt="" width="70"></td>
-                <td><a href="{% url 'libro' %}" style="text-decoration: underline;">Holly</a></td>
-                <td>1</td>
-                <td>$12.990</td>
-                <td>$12.990</td>
-                <td><button>Eliminar</button></td>
-            </tr>
+            {% endfor %}
         </table>
         <br>
-        <div id="total">Total: $35.960</div>
+        <div id="total">Total: ${{ total_carrito }}</div>
         <a href="{% url 'domicilio' %}">
             <button class="w3-button w3-dark-grey"></i> COMPRAR  </button>
         </a>
     </div>
 
-    <script src="../js/menus.js"></script>
+    <script src="{% static 'aplicacion/js/carrito.js' %}"></script>
 </body>
 
 </html>
