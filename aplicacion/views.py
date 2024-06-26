@@ -31,12 +31,9 @@ def gral_libro(request):
 def inf_pago(request):
     return render(request, 'aplicacion/inf_pago.html')
 
+@login_required
 def carrito(request):
     usuario = request.user
-    if not isinstance(usuario, Usuario):
-        # Manejar el caso cuando `request.user` no es un Usuario válido
-        # Puedes redirigir a otra página o mostrar un mensaje de error
-        return HttpResponse("Usuario no válido")
 
     carrito_usuario = Carrito.objects.filter(comprador_carrito=usuario)
     total_carrito = sum(item.libro.precio * item.cantidad for item in carrito_usuario)
