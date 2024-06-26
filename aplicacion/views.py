@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Libro
+from .forms import Agregar_libroForm
 # Create your views here.
 
 # Vistas principales 
@@ -83,7 +84,20 @@ def terror(request):
 
 #Vistas admin
 def agregar(request):
-    return render(request, 'aplicacion/imenu-w/agregar_producto.html')
+    mensaje = ""
+    if request.method == 'POST':
+        formulario = Agregar_libroForm(request.POST, request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            mensaje = "Libro agregado con éxito"
+            # Puedes añadir más lógica aquí después de guardar el formulario
+            #hacer en el form con el widyet
+        else:
+            mensaje = "Ha ocurrido un error. Verifica los datos ingresados."
+            # Si el formulario no es válido, puedes manejar los errores aquí
+    formulario = Agregar_libroForm()
+        # Puedes enviar más datos al contexto si es necesario
+    return render(request, 'aplicacion/imenu-w/agregar_producto.html', {'form': formulario, 'mensaje': mensaje})
 
 def buscar(request):
     return render(request, 'aplicacion/imenu-w/buscar_producto.html')

@@ -81,76 +81,26 @@
         <div class="col-sm"></div>
         <div class="col-sm" style="padding-top: 70px;">
             <div class="container p-5 rounded" id="second-navbar-content">
-                <form class="agregar_pro_form" style="color: #ffffff;">
+                <form class="" method="post" style="color: #ffffff;" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div class="w3-center">
                         <h2>Agregar Libro</h2>
                     </div>
-                    <div class="mb-3 mt-3">
-                        <label for="nombre_libr" class="form-label">Nombre del libro</label>
-                        <input type="text" class="form-control f-c" id="nombre_libr"
-                            placeholder="Escriba el Nombre del Libro" required>
-                        <div id="nombre_libro_ingre_error" class="error-message"></div>
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <label for="isbn" class="form-label">ISBN</label>
-                        <input type="text" class="form-control f-c" id="isbn" placeholder="Introducir ISBN" required>
-                        <div id="nombre_isbn_error_1" class="error-message"></div>
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <label for="confirm_isbn" class="form-label">Confirmar ISBN</label>
-                        <input type="text" class="form-control f-c" id="confirm_isbn" placeholder="Introducir ISBN"
-                            required>
-                        <div id="nombre_isbn_error" class="error-message"></div>
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <label for="autor" class="form-label">Nombre del autor</label>
-                        <input type="text" class="form-control f-c" id="autor" placeholder="Indique el autor del libro"
-                            required>
-                        <div id="autor_error" class="error-message"></div>
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <label for="genero" class="form-label">Género del libro</label>
-                        <select class="form-select" id="genero">
-                            <option value="" selected disabled>Seleccione una género</option>
-                            <option value="sci-fi">sci-fi</option>
-                            <option value="misterio">misterio</option>
-                            <option value="terror">terror</option>
-                            <option value="historia">historia</option>
-                            <option value="biografia">biografia</option>
-                            <option value="otro">otro</option>
-                        </select>
-                        <div id="genero_error" class="error-message"></div>
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <label for="valor_libr" class="form-label">Valor del libro</label>
-                        <input type="number" class="form-control f-c" id="valor_libr" placeholder="Agregar valor"
-                            required>
-                        <div id="valor_libro_error" class="error-message"></div>
-                    </div>
-                    <div class="mb-3">
+                    {{ form }}
 
-                        <div class="w3-container">
-                            <!-- contenido para adjuntar imagen -->
-                            <h2>Adjuntar Imagen</h2>
-
-                            <label class="w3-text-blue"><b>Selecciona una imagen (.jpg):</b></label>
-                            <input class="w3-input w3-border" type="file" name="imagen" accept=".jpg">
-                            <div id="imagen_error" class="error-message"></div>
-                            <br>
                             <div class="w3-center">
-                                <button type="submit" class="btn" style="margin-top: 25px;">Agregar Libro</button>
+                                <button type="submit" class="btn btn-primary" style="margin-top: 25px;">Agregar Libro</button>
                             </div>
-
                         </div>
                     </div>
-
                 </form>
+                {{ mensaje }}
             </div>
-
         </div>
         <div class="col-sm"></div>
-
     </div>
+    
+    
 
     <!-- End page content -->
     </div>
