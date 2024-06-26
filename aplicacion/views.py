@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Carrito, Libro, Usuario
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from .forms import LoginForm
 
 # Vistas principales 
 def index(request):
@@ -73,15 +78,20 @@ def c_contra(request):
 
 def ini_sesion(request):
     if request.method == 'POST':
-        nombre_cuenta = request.POST['nombreCuenta']
-        contraseña = request.POST['password']
-        user = authenticate(request, username=nombre_cuenta, password=contraseña)
-        if user is not None:
-            login(request, user)
-            return redirect('index')
-        else:
-            messages.error(request, 'Nombre de cuenta o contraseña incorrectos.')
-    return render(request, 'aplicacion/paginas_inicio_secion/Inicio_secion.html')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                # Redirigir a una página después del inicio de sesión exitoso
+                return redirect('index')  # Ajusta 'dashboard' según tu configuración de URLs
+            else:
+                messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
+    else:
+        form = LoginForm()
+    return render(request, 'aplicacion/paginas_inicio_secion/Inicio_secion.html', {'form': form})
 
 def reg_user(request):
     if request.method == 'POST':

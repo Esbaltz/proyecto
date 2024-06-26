@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,46 +62,11 @@
                 <div class="col"></div>
                 <div class="col-md">
                     <h2 class="text-center mb-4">Registro</h2>
-                    <form id="registroForm" action="{% url 'ini_sesion' %}" method="get">
-                        <div class="mb-3">
-                            <i class="fa fa-user icon"></i>
-                            <label for="nombreCuenta" class="form-label">Ingrese un nombre de cuenta nuevo</label>
-                            <input type="text" class="form-control" id="nombreCuenta"
-                                placeholder="Cree un nombre de cuenta" required>
-                            <div id="nombreCuentaError" class="error-message"></div>
-                        </div>
-                        <div class="mb-3">
-                            <i class="fa fa-envelope-o icon"></i>
-                            <label for="correo" class="form-label">Ingrese su correo</label>
-                            <input type="email" class="form-control" id="correo"
-                                placeholder="Ingrese correo electrónico" required email>
-                            <div id="correoErrorr" class="error-message"></div>
-                        </div>
-                        <div class="mb-3">
-                            <i class="fa fa-map-marker icon"></i>
-                            <label for="direccion" class="form-label">Ingrese dirección</label>
-                            <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección"
-                                required>
-                            <div id="direccionError" class="error-message"></div>
-                        </div>
-                        <div class="mb-3">
-                            <i class="fa fa-key icon"></i>
-                            <label for="password" class="form-label">Ingrese una contraseña</label>
-                            <input type="password" class="form-control" id="password" placeholder="Cree una contraseña"
-                                required>
-                            <div id="passwordError" class="error-message"></div>
-                        </div>
-                        <div class="mb-3">
-                            <i class="fa fa-key icon"></i>
-                            <label for="confirmPassword" class="form-label">Ingrese la contraseña nuevamente</label>
-                            <input type="password" class="form-control" id="confirmPassword"
-                                placeholder="Confirmar contraseña" required>
-                            <div id="passwordconError" class="error-message"></div>
-                        </div>
-                        <div class="w3-center">
-                            <button type="submit" class="btn"
-                                style="color: whitesmoke; background-color: black;">Finalizar Registro</button>
-                        </div>
+                    <form id="registroForm" action="" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+
+                        <button type="submit">Registrarse</button>
                     </form>
                 </div>
                 <div class="col"></div>
@@ -118,7 +84,10 @@
     <div class="container admin">
         <a href="{% url 'agregar' %}">Ingreso Admin</a>
     </div>
-
+    
+    <div style="margin-top: 80px;">
+        <br>
+    </div>
     <script src="{% static 'aplicacion/js/forms2.js' %}"></script>
     <script>
         window.onload = function () {

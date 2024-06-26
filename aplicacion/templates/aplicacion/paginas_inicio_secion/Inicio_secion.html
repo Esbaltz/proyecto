@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,27 +62,19 @@
                 <div class="col"></div>
                 <div class="col-md" style="margin-top: 50px;">
                     <h2 class="text-center mb-4">Login</h2>
-                    <form id="registroForm" action="{% url 'index' %}" method="get">
-                        <div class="mb-3">
-                            <i class="fa fa-user icon"></i>
-                            <label for="nombreCuenta" class="form-label">Nombre de la cuenta</label>
+                    <form id="registroForm" action="" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
 
-                            <input type="text" class="form-control" id="nombreCuenta"
-                                placeholder="Ingrese nombre de la cuenta" required>
-                            <div id="nombreCuentaError" class="error-message"></div>
-                        </div>
-                        <div class="mb-3">
-                            <i class="fa fa-key icon "></i>
-                            <label for="password" class="form-label">Contraseña</label>
-
-                            <input type="password" class="form-control" id="password" placeholder="Ingrese contraseña"
-                                required>
-                            <div id="passwordError" class="error-message"></div>
-                        </div>
-                        <div class="w3-center">
-                            <button type="submit" class="btn" style="color: whitesmoke; background-color: black;">Iniciar Sesión</button>
-                        </div>
+                        <button type="submit">Logearse</button>
                     </form>
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
                 <div class="col"></div>
             </div>

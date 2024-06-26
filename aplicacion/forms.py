@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from .models import Product
+#from .models import Product
 from django import forms
 from django.http import JsonResponse
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column, Field
 
-
+"""
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
@@ -36,7 +36,7 @@ class ProductForm(forms.ModelForm):
         # Add custom classes to fields
         for field in self.fields:
             self.fields[field].widget.attrs.update({'class': 'form-control'})
-
+"""
 
 def index(request):
     products = Product.objects.all()
@@ -60,3 +60,7 @@ def add_product(request):
     
     products = Product.objects.all()
     return render(request, 'pages/index.html', {'products': products, 'form': form})
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label="Nombre de usuario")
+    password = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
