@@ -44,6 +44,7 @@ urlpatterns = [
     #Paginas inicio de sesión
     path('Cambio_de_contraseña/', views.c_contra, name='c_contra'),
     path('Inicio_secion/', views.ini_sesion, name='ini_sesion'),
+    path('salir/',views.salir,name='salir'),
     path('Registro_usuario/', views.reg_user, name='reg_user'),
 
     #Páginas categorias de libros

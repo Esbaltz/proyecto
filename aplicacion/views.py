@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from .forms import LoginForm, Libro_agregarForm, LibroForm, LibroFormMod
+from django.contrib.auth import logout
 
 # Vistas principales 
 def index(request):
@@ -79,6 +80,11 @@ def ini_sesion(request):
     else:
         form = LoginForm()
     return render(request, 'aplicacion/paginas_inicio_secion/Inicio_secion.html', {'form': form})
+
+def salir(request):
+    logout(request)
+    messages.info(request,'Sesión Cerrada')
+    return redirect(to="index")
 
 def reg_user(request):
     if request.method == 'POST':

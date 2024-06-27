@@ -59,6 +59,11 @@
                 <a href="{% url 'c_contra' %}" class="btn btn-primary">Modificar
                     sesión</a>
             </div>
+            <div class="container admin">
+                {% if user.is_authenticated %}
+                <a href="{% url 'agregar' %}">Ingreso Admin</a>
+                {% endif %}
+            </div>
         </div>
         <div class="col-8">
             <table class="table mt-5">
