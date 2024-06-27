@@ -59,7 +59,7 @@ class DetallePedido(models.Model):
 
     def __str__(self):
         return f"{self.pedido} - {self.producto} - {self.cantidad}"
-
+    
 #no se si dejar la entidad oferta, pero como esta en la pagina, los determinados libros con descuento estan separados de los normales en la pagina general
 #class libro_oferta(models.Model):
     # d#escuento = models.DecimalField(max_digits=10, decimal_places=2)

@@ -6,9 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .forms import LoginForm
-from .forms import Libro_agregarForm
-from .forms import LibroForm
+from .forms import LoginForm, Libro_agregarForm, LibroForm
 
 # Vistas principales 
 def index(request):
@@ -170,16 +168,20 @@ def eliminar(request, isbn):
 def modificar(request, isbn):
     libro = get_object_or_404(Libro, isbn=isbn)
 
-    data ={
-        'form': Libro_agregarForm(instance=libro)
-    }
     if request.method == 'POST':
-        formulario = Libro_agregarForm(data=request.POST, instance=libro, files=request.FILES)
+        formulario = LibroForm(request.POST, request.FILES, instance=libro)
         if formulario.is_valid():
             formulario.save()
-            return redirect(to="buscar")
-        data["form"] = formulario
+            return redirect('buscar')
+    else:
+        formulario = LibroForm(instance=libro)
 
+    # No permitir modificar el campo isbn en el formulario
+    formulario.fields['isbn'].disabled = True
+
+    data = {
+        'form': formulario
+    }
     return render(request, 'aplicacion/imenu-w/modificar_producto.html', data)
 
 def pedidos(request):

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 #from .models import Product
 from django import forms
-from .models import Libro
+from .models import Libro, Usuario
 from django.http import JsonResponse
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column, Field
@@ -75,6 +75,29 @@ class LibroForm(forms.ModelForm):
     class Meta:
         model = Libro
         fields = ['isbn', 'nombre', 'nombre_autor', 'foto', 'precio', 'best_seler', 'tipo', 'subtipo']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Deshabilitar el campo isbn y establecer su valor si existe una instancia
+        self.fields['isbn'].disabled = True
+        if kwargs.get('instance'):
+            self.initial['isbn'] = kwargs['instance'].isbn
+
+    def clean_isbn(self):
+        # Validar que el isbn no cambie, aunque el campo esté presente
+        return self.instance.isbn if self.instance else self.cleaned_data.get('isbn')
+
+    def save(self, commit=True):
+        # Sobreescribir el método save para evitar cambios en el ISBN
+        if not self.instance.pk:  # Nuevo objeto, no hay que hacer nada especial
+            return super().save(commit=commit)
+
+        # Actualizar el objeto existente sin cambiar el ISBN
+        instance = super().save(commit=False)
+        instance.isbn = self.instance.isbn  # Mantener el mismo ISBN
+        if commit:
+            instance.save()
+        return instance
 
     def clean_nombre(self):
         nombre = self.cleaned_data.get('nombre')
