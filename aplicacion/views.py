@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .forms import LoginForm, Libro_agregarForm, LibroForm
+from .forms import LoginForm, Libro_agregarForm, LibroForm, LibroFormMod
 
 # Vistas principales 
 def index(request):
@@ -169,12 +169,12 @@ def modificar(request, isbn):
     libro = get_object_or_404(Libro, isbn=isbn)
 
     if request.method == 'POST':
-        formulario = LibroForm(request.POST, request.FILES, instance=libro)
+        formulario = LibroFormMod(request.POST, request.FILES, instance=libro)
         if formulario.is_valid():
             formulario.save()
             return redirect('buscar')
     else:
-        formulario = LibroForm(instance=libro)
+        formulario = LibroFormMod(instance=libro)
 
     # No permitir modificar el campo isbn en el formulario
     formulario.fields['isbn'].disabled = True
