@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from .forms import LoginForm
+from .forms import Libro_agregarForm
 
 # Vistas principales 
 def index(request):
@@ -132,7 +133,18 @@ def terror(request):
 
 #Vistas admin
 def agregar(request):
-    return render(request, 'aplicacion/imenu-w/agregar_producto.html')
+    if request.method == 'POST':
+        form = Libro_agregarForm(request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('agregar')  # Redirigir a una vista o URL específica después de guardar
+    else:
+        form = Libro_agregarForm()
+
+    data = {
+        'form': form
+    }
+    return render(request, 'aplicacion/imenu-w/agregar_producto.html', data)
 
 def buscar(request):
     return render(request, 'aplicacion/imenu-w/buscar_producto.html')

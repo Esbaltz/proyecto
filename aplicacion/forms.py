@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 #from .models import Product
 from django import forms
+from .models import Libro
 from django.http import JsonResponse
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column, Field
@@ -38,10 +39,10 @@ class ProductForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({'class': 'form-control'})
 """
 
-def index(request):
-    products = Product.objects.all()
-    return render(request, 'pages/index.html', {'products': products})
-
+#def index(request):
+ #   products = Product.objects.all()
+ #   return render(request, 'pages/index.html', {'products': products})
+"""""
 def delete_product(request, id):
     if request.method == 'POST':
         product = get_object_or_404(Product, pk=id)
@@ -60,7 +61,12 @@ def add_product(request):
     
     products = Product.objects.all()
     return render(request, 'pages/index.html', {'products': products, 'form': form})
-
+"""
 class LoginForm(forms.Form):
     username = forms.CharField(label="Nombre de usuario")
     password = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
+
+class Libro_agregarForm(forms.ModelForm):
+    class Meta:
+        model = Libro
+        fields = ['isbn', 'nombre','nombre_autor','tipo', 'precio','subtipo', 'best_seler','foto']
