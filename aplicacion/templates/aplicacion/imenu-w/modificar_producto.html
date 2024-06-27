@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
 
@@ -51,12 +52,8 @@
             <a href="{% url 'agregar' %}" class="w3-bar-item w3-button w3-padding tr"><i
                     class="fa fa-solid fa-book fa-fw"></i>  Agregar
                 Producto</a>
-            <a href="{% url 'modificar' %}" class="w3-bar-item w3-button w3-padding w3-blue tr"><i
-                    class="fa fa-pen-nib fa-fw"></i>   Modificar
-                Producto</a>
-            <a href="{% url 'eliminar' %}" class="w3-bar-item w3-button w3-padding tr"><i
-                    class="fa fa-solid fa-eraser fa-fw"></i> 
-                Eliminar Producto</a>
+
+
             <a href="{% url 'buscar' %}" class="w3-bar-item w3-button w3-padding tr"><i
                     class="fa fas fa-search fa-fw"></i>  Buscar
                 Producto</a>
@@ -77,55 +74,29 @@
         title="close side menu" id="myOverlay"></div>
 
     <!-- !PAGE CONTENT! -->
-    <div class="row mt-3">
+    <div class="row mt-3 mb-3">
         <div class="col-sm"></div>
         <div class="col-sm" style="padding-top: 70px;">
-            <div class="container p-5 rounded" id="second-navbar-content" style="margin-bottom: 25px;">
-                <form id="agregar_pro_form" style="color: #ffffff;">
+            <div class="container p-5 rounded" id="second-navbar-content">
+                <form class="" method="post" style="color: #ffffff;" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div class="w3-center">
-                        <h2>Modificar Producto</h2>
+                        <h2>Editar Libro</h2>
                     </div>
-                    <div class="mb-3 mt-3">
-                        <label for="nombre_libr" class="form-label">Nombre del Producto</label>
-                        <input type="text" class="form-control f-c" id="nombre_libr" placeholder="Ingrese Nombre"
-                            required>
-                        <div id="nombre_libro_ingre_error" class="error-message"></div>
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <label for="autor" class="form-label">Nombre del autor</label>
-                        <input type="text" class="form-control f-c" id="autor" placeholder="Ingrese nombre del autor"
-                            required>
-                        <div id="autor_error" class="error-message"></div>
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <label for="genero" class="form-label">Género del libro</label>
-                        <select class="form-select" id="genero">
-                            <option value="" selected disabled>Seleccione una género</option>
-                            <option value="sci-fi">sci-fi</option>
-                            <option value="misterio">misterio</option>
-                            <option value="terror">terror</option>
-                            <option value="historia">historia</option>
-                            <option value="biografia">biografia</option>
-                            <option value="otro">otro</option>
-                        </select>
-                        <div id="genero_error" class="error-message"></div>
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <label for="valor_libr" class="form-label">Valor del libro</label>
-                        <input type="text" class="form-control f-c" id="valor_libr" placeholder="Agregar valor"
-                            required>
-                        <div id="valor_libro_error" class="error-message"></div>
-                    </div>
+                    {{ form}}
 
-                    <div class="w3-center">
-                        <button type="submit" class="btn" style="margin-top: 25px;">Modificar</button>
+                            <div class="w3-center">
+                                <button type="submit" class="btn btn-primary" style="margin-top: 25px;">Editar</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
+                {{ mensaje }}
             </div>
         </div>
         <div class="col-sm"></div>
     </div>
-
+    
     <!-- End page content -->
     </div>
 

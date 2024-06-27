@@ -70,3 +70,4 @@ class Libro_agregarForm(forms.ModelForm):
     class Meta:
         model = Libro
         fields = ['isbn', 'nombre','nombre_autor','tipo', 'precio','subtipo', 'best_seler','foto']
+

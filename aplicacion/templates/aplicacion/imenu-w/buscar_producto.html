@@ -51,12 +51,7 @@
             <a href="{% url 'agregar' %}" class="w3-bar-item w3-button w3-padding tr"><i
                     class="fa fa-solid fa-book fa-fw"></i>  Agregar
                 Producto</a>
-            <a href="{% url 'modificar' %}" class="w3-bar-item w3-button w3-padding tr"><i
-                    class="fa fa-pen-nib fa-fw"></i>   Modificar
-                Producto</a>
-            <a href="{% url 'eliminar' %}" class="w3-bar-item w3-button w3-padding tr"><i
-                    class="fa fa-solid fa-eraser fa-fw"></i> 
-                Eliminar Producto</a>
+
             <a href="{% url 'buscar' %}" class="w3-bar-item w3-button w3-padding w3-blue tr"><i
                     class="fa fas fa-search fa-fw"></i>  Buscar
                 Producto</a>
@@ -87,27 +82,30 @@
                         <h2>Buscar Libro</h2>
                     </div>
                     <div class="mb-3 mt-3">
-                        <label for="nombre_libr1" class="form-label">Buscar por Nombre</label>
-                        <input type="text" class="form-control f-c" id="nombre_libr1" placeholder="Ingrese Nombre"
-                            required>
-                        <div id="nombre_libro_ingre_error1" class="error-message"></div>
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <label for="buscar_isbn1" class="form-label">Buscar por ISBN</label>
-                        <input type="text" class="form-control f-c" id="buscar_isbn1" placeholder="Introducir ISBN"
-                            required>
-                        <div id="nombre_isbn_error1" class="error-message"></div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="descrip1">Detalles del Libro</label>
-                        <textarea class="form-control f-c" rows="5" id="detall_libr1" required style="resize: none;"
-                            type="text"></textarea>
-                        <div id="descrip_error_libr1" class="error-message"></div>
-                    </div>
+                        <!-- Aquí puedes mostrar la lista de libros -->
+                        <table class="table table-striped table-hover table-responsive-sm">
+                            <thead>
+                                <tr>
+                                    <th>Foto</th>
+                                    <th>Nombre</th>
+                                    <th>precio</th>
+                                    <th>opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in libros %}
+                                <tr>
+                                    <td><img src="{{p.foto.url}}" alt="foto" height="100"></td>
+                                    <td>{{p.nombre}}</td>
+                                    <td>{{p.precio}}</td>
+                                
+                                <td>
+                                    <a href="{% url 'modificar' isbn=p.isbn %}" class="btn btn-primary">modificar</a>
+                                    <a href="{% url 'eliminar' isbn=p.isbn %}" class="btn btn-danger">eliminar</a>
+                                </td>
+                                </tr>
+                                {% endfor %}
 
-                    <div class="w3-center">
-                        <button type="submit" class="btn" style="margin-top: 25px;">Buscar</button>
-                    </div>
                 </form>
             </div>
 

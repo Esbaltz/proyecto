@@ -7,7 +7,7 @@ from datetime import date
 # Create your models here.
 class Libro(models.Model):
     #no se si dejar el isbn como clave primaria o ponerle un id para diferenciarlos
-    isbn=models.CharField(max_length=10, primary_key=True, null=False)
+    isbn=models.CharField(max_length=13, primary_key=True, null=False)
     nombre=models.CharField(max_length=50, null=False)
     nombre_autor=models.CharField(max_length=50, null=False, default='no posee autor')#falta el autor en el html
     foto=models.ImageField("Imagen",upload_to='libros',null=True)

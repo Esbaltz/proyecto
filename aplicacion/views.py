@@ -147,16 +147,35 @@ def agregar(request):
     return render(request, 'aplicacion/imenu-w/agregar_producto.html', data)
 
 def buscar(request):
-    return render(request, 'aplicacion/imenu-w/buscar_producto.html')
+    libros = Libro.objects.all()
+
+    data={
+        'libros': libros
+    }
+    return render(request, 'aplicacion/imenu-w/buscar_producto.html', data)
 
 def crear(request):
     return render(request, 'aplicacion/imenu-w/crear_cuenta.html')
 
-def eliminar(request):
-    return render(request, 'aplicacion/imenu-w/eliminar_producto.html')
+def eliminar(request, isbn):
+    libro = get_object_or_404(Libro, isbn=isbn)
+    libro.delete()
+    return redirect(to="buscar")
 
-def modificar(request):
-    return render(request, 'aplicacion/imenu-w/modificar_producto.html')
+def modificar(request, isbn):
+    libro = get_object_or_404(Libro, isbn=isbn)
+
+    data ={
+        'form': Libro_agregarForm(instance=libro)
+    }
+    if request.method == 'POST':
+        formulario = Libro_agregarForm(data=request.POST, instance=libro, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="buscar")
+        data["form"] = formulario
+
+    return render(request, 'aplicacion/imenu-w/modificar_producto.html', data)
 
 def pedidos(request):
     return render(request, 'aplicacion/imenu-w/pedidos.html')
