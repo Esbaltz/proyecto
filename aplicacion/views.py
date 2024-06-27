@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from .forms import LoginForm
 from .forms import Libro_agregarForm
+from .forms import LibroForm
 
 # Vistas principales 
 def index(request):
@@ -133,16 +134,20 @@ def terror(request):
 
 #Vistas admin
 def agregar(request):
+    exito = False  # Variable para controlar si mostrar el mensaje de éxito
+    
     if request.method == 'POST':
-        form = Libro_agregarForm(request.POST, files=request.FILES)
+        form = LibroForm(request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('agregar')  # Redirigir a una vista o URL específica después de guardar
+            exito = True  # Cambia el estado de éxito a True después de guardar el libro correctamente
+            # Puedes agregar más lógica aquí si lo necesitas antes de redirigir o renderizar nuevamente
     else:
-        form = Libro_agregarForm()
+        form = LibroForm()
 
     data = {
-        'form': form
+        'form': form,
+        'exito': exito,  # Pasar la variable exito al contexto de la plantilla
     }
     return render(request, 'aplicacion/imenu-w/agregar_producto.html', data)
 

@@ -3,6 +3,8 @@ from .listas import TIPO_GENERO,SUBTIPO_GENERO,TIPO_ESTADO
 # Create your models here.
 from django.core.validators import MinValueValidator
 from datetime import date
+from django.db import models
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 class Libro(models.Model):

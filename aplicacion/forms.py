@@ -71,3 +71,54 @@ class Libro_agregarForm(forms.ModelForm):
         model = Libro
         fields = ['isbn', 'nombre','nombre_autor','tipo', 'precio','subtipo', 'best_seler','foto']
 
+class LibroForm(forms.ModelForm):
+    class Meta:
+        model = Libro
+        fields = ['isbn', 'nombre', 'nombre_autor', 'foto', 'precio', 'best_seler', 'tipo', 'subtipo']
+
+    def clean_nombre(self):
+        nombre = self.cleaned_data.get('nombre')
+        if len(nombre) < 3:
+            raise forms.ValidationError('El nombre del libro debe tener al menos 3 caracteres.')
+        return nombre
+
+    def clean_isbn(self):
+        isbn = self.cleaned_data.get('isbn')
+        if len(isbn) < 10 or len(isbn) > 13:
+            raise forms.ValidationError('El ISBN debe tener entre 10 y 13 caracteres.')
+        return isbn
+
+    def clean_precio(self):
+        precio = self.cleaned_data.get('precio')
+        if precio < 0:
+            raise forms.ValidationError('El precio no puede ser negativo.')
+        return precio
+
+    def clean_nombre_autor(self):
+        nombre_autor = self.cleaned_data.get('nombre_autor')
+        if len(nombre_autor) < 3:
+            raise forms.ValidationError('El nombre del autor debe se mayor a 3 cáracteres.')
+        # Aquí podrías agregar otras validaciones según tus requisitos
+        return nombre_autor
+
+    # Añade más métodos clean_ según sea necesario para otros campos
+
+    def clean_foto(self):
+        foto = self.cleaned_data.get('foto')
+        # Puedes agregar validaciones personalizadas para la foto si lo necesitas
+        return foto
+
+    def clean_best_seler(self):
+        best_seler = self.cleaned_data.get('best_seler')
+        # Puedes agregar validaciones personalizadas para best_seler si lo necesitas
+        return best_seler
+
+    def clean_tipo(self):
+        tipo = self.cleaned_data.get('tipo')
+        # Puedes agregar validaciones personalizadas para tipo si lo necesitas
+        return tipo
+
+    def clean_subtipo(self):
+        subtipo = self.cleaned_data.get('subtipo')
+        # Puedes agregar validaciones personalizadas para subtipo si lo necesitas
+        return subtipo

@@ -83,13 +83,11 @@
                     <div class="w3-center">
                         <h2>Editar Libro</h2>
                     </div>
-                    {{ form}}
+                    {{ form|crispy }}
 
                             <div class="w3-center">
                                 <button type="submit" class="btn btn-primary" style="margin-top: 25px;">Editar</button>
                             </div>
-                        </div>
-                    </div>
                 </form>
                 {{ mensaje }}
             </div>
@@ -98,6 +96,9 @@
     </div>
     
     <!-- End page content -->
+    </div>
+    <div style="margin-top: 60px">
+        <br>
     </div>
 
     <script src="{% static 'aplicacion/js/menus.js' %}"></script>

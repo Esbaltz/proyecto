@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Agregar Producto</title>
     <meta charset="UTF-8">
@@ -29,7 +30,8 @@
         id="mySidebar"><br>
         <div class="w3-container w3-row">
             <div class="w3-col m2 text-center" style="margin-right: 43px;">
-                <img class="w3-circle" src="{% static 'aplicacion/img/inspirado.jpeg' %}" style="width:76px;height:76px">
+                <img class="w3-circle" src="{% static 'aplicacion/img/inspirado.jpeg' %}"
+                    style="width:76px;height:76px">
             </div>
             <div class="w3-col s8 w3-bar">
                 <span>Welcome, <strong>ADMIN</strong></span><br>
@@ -55,8 +57,8 @@
 
 
             <a href="{% url 'buscar' %}" class="w3-bar-item w3-button w3-padding tr"><i
-                    class="fa fas fa-search fa-fw"></i>  Buscar
-                Producto</a>
+                    class="fa fas fa-search fa-fw"></i>  Listado de
+                Productos</a>
         </div>
         <div class="w3-container w3-center mt-3">
             <h5><strong>Gestión de usuarios</strong></h5>
@@ -64,7 +66,8 @@
         <div class="w3-bar-block">
             <a href="{% url 'pedidos' %}" class="w3-bar-item w3-button w3-padding tr"><i
                     class="fa fas fa-people-carry fa-fw"></i>  Ver pedidos</a>
-            <a href="{% url 'usuarios' %}" class="w3-bar-item w3-button w3-padding tr"><i class="fa fas fa-users fa-fw"></i> 
+            <a href="{% url 'usuarios' %}" class="w3-bar-item w3-button w3-padding tr"><i
+                    class="fa fas fa-users fa-fw"></i> 
                 Ver usuarios</a>
         </div>
     </nav>
@@ -78,28 +81,27 @@
         <div class="col-sm"></div>
         <div class="col-sm" style="padding-top: 70px;">
             <div class="container p-5 rounded" id="second-navbar-content">
-                <form class="" method="post" style="color: #ffffff;" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <div class="w3-center">
-                        <h2>Agregar Libro</h2>
-                    </div>
-                    {{ form | crispy }}
+                    {{ form|crispy }}
 
-                            <div class="w3-center">
-                                <button type="submit" class="btn btn-primary" style="margin-top: 25px;">Agregar Libro</button>
-                            </div>
-                        </div>
-                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar Libro</button>
                 </form>
-                {{ mensaje }}
             </div>
         </div>
+        {{ mensaje }}
         <div class="col-sm"></div>
     </div>
-    
-    
+    </div>
+    </div>
+
+
 
     <!-- End page content -->
+    </div>
+
+    <div style="margin-top:40px">
+        <br>
     </div>
 
     <script src="{% static 'aplicacion/js/menus.js' %}"></script>
