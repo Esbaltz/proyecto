@@ -21,12 +21,19 @@
         <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-wide efect">Entre Verbos</a>
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small l-efect">
-            <a href="{% url 'index' %}" class="w3-bar-item w3-button">Inicio</a>
-            <a href="{% url 'tienda' %}" class="w3-bar-item w3-button"><i class="fa fa-th"></i> Tienda</a>
-            <a href="{% url 'carrito' %}" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> Carrito</a>
-            <a href="{% url 'ini_sesion' %}" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> Iniciar Sesión</a>
-            <a href="{% url 'usuario' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Usuario</a>
-        </div>
+          <a href="{% url 'index' %}" class="w3-bar-item w3-button">Inicio</a>
+          <a href="{% url 'tienda' %}" class="w3-bar-item w3-button"><i class="fa fa-th"></i> Tienda</a>
+          <a href="{% url 'carrito' %}" class="w3-bar-item w3-button"><i class="fa fa-usd"></i>
+              Carrito</a>
+          {% if user.is_authenticated %}
+          <a href="{% url 'usuario' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Usuario: {{user.username}}</a>
+          <a href="{% url 'salir' %}" class="w3-bar-item w3-button"><i
+              class="fa fa-envelope"></i> Cerrar sesión</a>
+          {% else %}
+          <a href="{% url 'ini_sesion' %}" class="w3-bar-item w3-button"><i
+              class="fa fa-envelope"></i> Iniciar Sesión</a>
+          {% endif %}
+      </div>
         <!-- Hide right-floated links on small screens and replace them with a menu icon -->
         <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
             onclick="w3_open()">
