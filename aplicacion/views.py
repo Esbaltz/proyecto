@@ -148,7 +148,6 @@ def agregar(request):
         if form.is_valid():
             form.save()
             exito = True  # Cambia el estado de éxito a True después de guardar el libro correctamente
-            # Puedes agregar más lógica aquí si lo necesitas antes de redirigir o renderizar nuevamente
     else:
         form = LibroForm()
 
@@ -176,20 +175,21 @@ def eliminar(request, isbn):
 
 def modificar(request, isbn):
     libro = get_object_or_404(Libro, isbn=isbn)
+    exito = False
 
     if request.method == 'POST':
         formulario = LibroFormMod(request.POST, request.FILES, instance=libro)
         if formulario.is_valid():
             formulario.save()
-            return redirect('buscar')
+            exito = True  # Cambia el estado de éxito a True después de guardar los cambios correctamente
     else:
         formulario = LibroFormMod(instance=libro)
-
-    # No permitir modificar el campo isbn en el formulario
-    formulario.fields['isbn'].disabled = True
+        # No permitir modificar el campo isbn en el formulario
+        formulario.fields['isbn'].disabled = True
 
     data = {
-        'form': formulario
+        'form': formulario,
+        'exito': exito,  # Pasar la variable exito al contexto de la plantilla
     }
     return render(request, 'aplicacion/imenu-w/modificar_producto.html', data)
 
