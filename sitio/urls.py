@@ -22,6 +22,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -34,7 +35,7 @@ urlpatterns = [
     path('inf_pago/', views.inf_pago, name='inf_pago'),
     #carrito
     path('pagina_carrito_general/', views.carrito, name='carrito'),
-    path('agregar_al_carrito/<int:libro_id>/', views.agregar_al_carrito, name='agregar_al_carrito'),
+    path('agregar_al_carrito/<isbn>/', views.agregar_al_carrito, name='agregar_al_carrito'),
     path('eliminar_del_carrito/<int:carrito_id>/', views.eliminar_del_carrito, name='eliminar_del_carrito'),
     path('pagina_domicilio_y_pagar/', views.domicilio, name='domicilio'),
 

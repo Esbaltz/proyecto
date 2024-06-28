@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from .forms import LoginForm, Libro_agregarForm, LibroForm, LibroFormMod
 from django.contrib.auth import logout
-
+from django.contrib.auth.models import User
 # Vistas principales 
 def index(request):
 
@@ -31,13 +31,16 @@ def gral_libro(request):
 
 def inf_pago(request):
     return render(request, 'aplicacion/inf_pago.html')
-
+@login_required
 def carrito(request):
-    return render(request, 'aplicacion/pagina_carrito_general.html')
+    usuario =  request.user.id
+    carrito_items = Carrito.objects.filter(comprador_carrito=usuario)
+    total = sum(item.libro.precio * item.cantidad for item in carrito_items)
+    return render(request, 'aplicacion/pagina_carrito_general.html', {'carrito_items': carrito_items, 'total': total})
 
-def agregar_al_carrito(request, libro_id):
-    libro = get_object_or_404(Libro, id=libro_id)
-    usuario = request.user  # Obtener el usuario actual, ajusta según tu autenticación
+def agregar_al_carrito(request, isbn):
+    libro = get_object_or_404(Libro, isbn=isbn)
+    usuario = request.user  # Obtener el usuario actual
 
     # Verificar si ya existe el libro en el carrito del usuario
     carrito, created = Carrito.objects.get_or_create(comprador_carrito=usuario, libro=libro)
