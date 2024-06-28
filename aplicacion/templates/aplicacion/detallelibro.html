@@ -70,12 +70,14 @@ https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css
         <h1 class="w3-center">HOLLY</h1>
         <h3 class="w3-center">Stephen King</h3>
         <p class="w3-large" id="book-description">Cargando descripción...</p>
+        <form action="{% url "agregar_al_carrito/9783161434" %}" method="post">
         <div class="w3-padding-64 w3-center">
           {% if user.is_authenticated %}
-          <button class="w3-button w3-gray w3-hover-black" onclick="confirmarCompra()">Agregar al carrito</button>
+          <button class="w3-button w3-gray w3-hover-black" >Agregar al carrito</button>
           {% else %}
           <p><strong>Debe iniciar sesión para comprar</strong></p>
           {% endif %}
+        </form>
         </div>
       </div>
     </div>

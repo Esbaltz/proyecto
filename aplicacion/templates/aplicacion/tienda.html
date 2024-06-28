@@ -99,7 +99,7 @@ https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css
             {% for p in libro %}
                 {% if p.best_seler and p.tipo == "Ficción" %} 
                     <div class="w3-quarter">
-                        <a href="{% url 'libro' %}" class="img-move">
+                        {% comment %} <a href="{% url 'libro' %}" class="img-move"> {% endcomment %}
                         {% if p.foto %}
                         <img src="{{ p.foto.url }}" alt="Autonumus" style="width:100%">
                         {% endif %}
@@ -118,14 +118,14 @@ https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css
         <!-- Second Photo Grid-->
         <div class="w3-row-padding w3-padding-16 w3-center">
             <div class="w3-quarter">
-                <a href="{% url 'libro' %}" class="img-move">
+               {% comment %}  <a href="{% url 'libro' %}" class="img-move"> {% endcomment %}
                     <img src="{% static 'aplicacion/img/historia2.png' %}" alt="Historia" style="width:100%">
                 </a>
                 <h3>Breve historia del mundo</h3>
                 <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
             </div>
             <div class="w3-quarter">
-                <a href="{% url 'libro' %}" class="img-move">
+          {% comment %}       <a href="{% url 'libro' %}" class="img-move"> {% endcomment %}
                     <img src="{% static 'aplicacion/img/metro.jpg' %}" alt="Metro" style="width:100%">
                 </a>
                 <h3>Metro</h3>
@@ -133,14 +133,14 @@ https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css
                 </p>
             </div>
             <div class="w3-quarter">
-                <a href="{% url 'libro' %}" class="img-move">
+               {% comment %}  <a href="{% url 'libro' %}" class="img-move"> {% endcomment %}
                     <img src="{% static 'aplicacion/img/Holly_stephen_king.jpg' %}" alt="Holly" style="width:100%">
                 </a>
                 <h3>Holly</h3>
                 <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
             </div>
             <div class="w3-quarter">
-                <a href="{% url 'libro' %}" class="img-move">
+                {% comment %} <a href="{% url 'libro' %}" class="img-move"> {% endcomment %}
                     <img src="{% static 'aplicacion/img/El_hobit.jpg' %}" alt="El Hobbit" style="width:100%">
                 </a>
                 <h3>El hobbit</h3>

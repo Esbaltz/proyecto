@@ -26,8 +26,8 @@ def tienda(request):
     }
     return render(request, 'aplicacion/tienda.html', data)
 
-def gral_libro(request):
-    return render(request, 'aplicacion/pagina_general_libro.html')
+def detallelibro(request, isbn):
+    return render(request, 'aplicacion/detallelibro.html')
 
 def inf_pago(request):
     return render(request, 'aplicacion/inf_pago.html')
@@ -192,6 +192,9 @@ def modificar(request, isbn):
         'exito': exito,  # Pasar la variable exito al contexto de la plantilla
     }
     return render(request, 'aplicacion/imenu-w/modificar_producto.html', data)
+
+def libro(request):
+    return render(request, 'aplicacion/tienda.html')
 
 def pedidos(request):
     return render(request, 'aplicacion/imenu-w/pedidos.html')
