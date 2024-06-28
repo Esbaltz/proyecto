@@ -33,23 +33,26 @@ def inf_pago(request):
     return render(request, 'aplicacion/inf_pago.html')
 @login_required
 def carrito(request):
-    usuario =  request.user.id
+    usuario = request.user.id
     carrito_items = Carrito.objects.filter(comprador_carrito=usuario)
     total = sum(item.libro.precio * item.cantidad for item in carrito_items)
     return render(request, 'aplicacion/pagina_carrito_general.html', {'carrito_items': carrito_items, 'total': total})
 
 def agregar_al_carrito(request, isbn):
     libro = get_object_or_404(Libro, isbn=isbn)
-    usuario = request.user  # Obtener el usuario actual
+    usuario = request.user # Obtener el usuario actual
 
     # Verificar si ya existe el libro en el carrito del usuario
     carrito, created = Carrito.objects.get_or_create(comprador_carrito=usuario, libro=libro)
 
     if not created:
         carrito.cantidad += 1
-        carrito.save()
+    else:
+        carrito.cantidad = 1
+    
+    carrito.save() # Asegurarse de guardar el carrito en ambos casos
 
-    return redirect('carrito')  
+    return redirect('carrito') # Redirigir al carrito
 
 def eliminar_del_carrito(request, carrito_id):
     carrito = get_object_or_404(Carrito, id=carrito_id)

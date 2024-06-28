@@ -59,15 +59,18 @@
     <!-- About Section -->
     <div class="w3-row w3-padding-64" id="about">
       <div class="w3-col m6 w3-padding-large">
-        <img src="{% static 'aplicacion/img/Holly_stephen_king.jpg' %}" class="w3-round w3-image img-move" alt="Table Setting" width="600">
+          <img src="{% static libro.imagen_url %}" class="w3-round w3-image img-move" alt="Imagen del libro" width="600">
       </div>
       <div class="w3-col m6 w3-padding-large">
-        <h1 class="w3-center">HOLLY</h1>
-        <h3 class="w3-center">Stephen King</h3>
+          <h1 class="w3-center">{{ libro.titulo }}</h1>
+          <h3 class="w3-center">{{ libro.autor }}</h3>
         <p class="w3-large" id="book-description">Cargando descripción...</p>
-        <div class="w3-padding-64 w3-center">
-          <button class="w3-button w3-gray w3-hover-black" onclick="confirmarCompra()">Agregar al carrito</button>
-        </div>
+        <button class="w3-button w3-gray w3-hover-black" onclick="confirmarCompra('{{ libro.isbn }}')">Agregar al carrito</button>
+        <form id="agregarAlCarritoForm" method="post" style="display: none;">
+          {% csrf_token %}
+          <input type="hidden" id="isbn_input" name="isbn" value="">
+        </form>
+      
       </div>
     </div>
     <hr>
@@ -139,9 +142,33 @@
     }
 
     window.onload = function () {
-        desc();
+      desc();
     };
+
+    function agregarAlCarrito(isbn) {
+      Swal.fire({
+        title: 'Producto agregado',
+        text: '¿Deseas seguir comprando o ir al carrito?',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonText: 'Ir al carrito',
+        cancelButtonText: 'Seguir comprando',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Configurar dinámicamente el formulario antes de enviarlo
+          document.getElementById('isbn_input').value = isbn; // Establecer el valor del ISBN
+          document.getElementById('agregarAlCarritoForm').action = "{% url 'agregar_al_carrito' '0' %}".replace('0', isbn); // Configurar la acción del formulario
+    
+          // Mostrar y enviar el formulario
+          document.getElementById('agregarAlCarritoForm').style.display = 'block';
+          document.getElementById('agregarAlCarritoForm').submit();
+        }
+      });
+    }
   </script>
+  
+
+
 </body>
 
 </html>

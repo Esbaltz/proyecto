@@ -90,19 +90,26 @@
         <!-- First Photo Grid-->
         <div class="w3-row-padding w3-padding-16 w3-center" id="food">
             {% for p in libro %}
-                {% if p.tipo == "Ficción"  and p.subtipo == "Misterio" %}
+                {% if p.tipo == "Ficción" and p.subtipo == "Misterio" %}
                     <div class="w3-quarter">
                         <a href="{% url 'libro' %}" class="img-move">
                             {% if p.foto %}
                             <img src="{{ p.foto.url }}" alt="Autonumus" style="width:100%">
                             {% endif %}
                         </a>
-                    <h3>{{ p.nombre }}</h3>
-                    <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                        <h3>{{ p.nombre }}</h3>
+                        <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                        <button class="w3-button w3-gray w3-hover-black" onclick="agregarAlCarrito('{{ p.isbn }}')">Agregar al carrito</button>
+                        <form id="agregarAlCarritoForm" method="post" style="display: none;">
+                          {% csrf_token %}
+                          <input type="hidden" id="isbn_input" name="isbn" value="">
+                        </form>
                     </div>
                 {% endif %}
             {% endfor %}
-            </div>
+        </div>
+        
+        
 
         <!-- About Section -->
         <div class="w3-container" style="padding-top: 50px;" id="about">
@@ -157,6 +164,36 @@
 
     <script src="{% static 'aplicacion/js/menus.js' %}"></script>
     <script src="{% static 'aplicacion/js/categorias.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+        function agregarAlCarrito(isbn) {
+            Swal.fire({
+                title: 'Producto agregado',
+                text: '¿Deseas seguir comprando o ir al carrito?',
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonText: 'Ir al carrito',
+                cancelButtonText: 'Seguir comprando',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Configurar dinámicamente el formulario antes de enviarlo
+                    document.getElementById('isbn_input').value = isbn; // Establecer el valor del ISBN
+                    document.getElementById('agregarAlCarritoForm').action = "{% url 'agregar_al_carrito' '0' %}".replace('0', isbn); // Configurar la acción del formulario
+    
+                    // Mostrar y enviar el formulario
+                    document.getElementById('agregarAlCarritoForm').style.display = 'block';
+                    document.getElementById('agregarAlCarritoForm').submit();
+    
+                    // Redirección explícita a la página del carrito
+                    window.location.href = "{% url 'carrito' %}";
+                }
+            });
+        }
+    </script>
+    
 </body>
 
 </html>
