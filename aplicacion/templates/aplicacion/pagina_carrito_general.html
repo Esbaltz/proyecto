@@ -72,7 +72,7 @@
                 <td><a href="{% url 'libro' %}" style="text-decoration: underline;">{{ item.libro.titulo }}</a></td>
                 <td>{{ item.cantidad }}</td>
                 <td>${{ item.libro.precio }}</td>
-                <td>${{ item.libro.precio|mul:item.cantidad }}</td>
+                <td>{{ total_carrito }}</td>
                 <td><a href="{% url 'eliminar_del_carrito' item.id %}"><button>Eliminar</button></a></td>
             </tr>
             {% endfor %}
