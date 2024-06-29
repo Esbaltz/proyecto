@@ -58,23 +58,26 @@
   <div class="w3-content w3-padding-16" style="max-width:1000px">
     <!-- About Section -->
     <div class="w3-row w3-padding-64" id="about">
-      <div class="w3-col m6 w3-padding-large">
-          <img src="{% static libro.imagen_url %}" class="w3-round w3-image img-move" alt="Imagen del libro" width="600">
-      </div>
-      <div class="w3-col m6 w3-padding-large">
-          <h1 class="w3-center">{{ libro.titulo }}</h1>
-          <h3 class="w3-center">{{ libro.autor }}</h3>
-        <p class="w3-large" id="book-description">Cargando descripción...</p>
-        <button class="w3-button w3-gray w3-hover-black" onclick="confirmarCompra('{{ libro.isbn }}')">Agregar al carrito</button>
-        <form id="agregarAlCarritoForm" method="post" style="display: none;">
-          {% csrf_token %}
-          <input type="hidden" id="isbn_input" name="isbn" value="">
-        </form>
+
+          <div class="w3-col m6 w3-padding-large">
+            <img src="{{ general.foto.url }}" class="w3-round w3-image img-move" alt="Imagen del libro" width="600">
+          </div>
+          <div class="w3-col m6 w3-padding-large">
+            <h1 class="w3-center">{{ general.nombre }}</h1>
+            <h3 class="w3-center">{{ general.nombre_autor }}</h3>
+            <p class="w3-large" id="book-description">Cargando descripción...</p>
+          <button class="w3-button w3-gray w3-hover-black" onclick="confirmarCompra('{{ general.isbn }}')">Agregar al carrito</button>
+          <form id="agregarAlCarritoForm" method="post" style="display: none;">
+            {% csrf_token %}
+            <input type="hidden" id="isbn_input" name="isbn" value="{{ general.isbn }}">
+          </form>
       
-      </div>
-    </div>
-    <hr>
+          </div>
+          </div>
+          <hr>
     <!-- End page content -->
+
+
   </div>
 
   <div class="w3-padding-16">
@@ -82,42 +85,11 @@
   </div>
   <div class="w3-content" style="max-width:1200px">
     <!-- First Photo Grid-->
-    <div class="w3-row-padding w3-padding-16 w3-center" id="food">
-      <div class="w3-quarter">
-          <a href="{% url 'libro' %}" class="img-move">
-              <img src="{% static 'aplicacion/img/Autonomous_libro.jpg' %}" alt="Autonumus" style="width:100%">
-          </a>
-          <h3>Autonumus</h3>
-          <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="w3-quarter">
-          <a href="{% url 'libro' %}" class="img-move">
-              <img src="{% static 'aplicacion/img/El_hobit.jpg' %}" alt="El hobbit" style="width:100%"> 
-          </a>
-          <h3>El hobbit</h3>
-          <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="w3-quarter">
-          <a href="{% url 'libro' %}" class="img-move">
-              <img src="{% static 'aplicacion/img/Holly_stephen_king.jpg' %}" alt="Holly" style="width:100%"> 
-          </a>
-          <h3>Holly</h3>
-          <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-          <p>What else?</p>
-      </div>
-      <div class="w3-quarter">
-          <a href="{% url 'libro' %}" class="img-move">
-              <img src="{% static 'aplicacion/img/metro.jpg' %}" alt="Pasta and Wine" style="width:100%"> 
-          </a>
-          <h3>Metro</h3>
-          <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-    </div>
-  </div>
+  
 
   <!-- Footer -->
   <footer class="w3-center w3-black w3-padding-64 foot">
-    <a href="{% url 'libro' %}" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Al inicio</a>
+
     <p>Hecho por <a href="{% url 'index' %}" title="Regresar al inicio" target="_blank" class="w3-hover-text-green">Entre Verbos</a></p>
   </footer>
 
@@ -140,11 +112,11 @@
         }
       });
     }
-
+  
     window.onload = function () {
       desc();
     };
-
+  
     function agregarAlCarrito(isbn) {
       Swal.fire({
         title: 'Producto agregado',
@@ -155,17 +127,40 @@
         cancelButtonText: 'Seguir comprando',
       }).then((result) => {
         if (result.isConfirmed) {
-          // Configurar dinámicamente el formulario antes de enviarlo
-          document.getElementById('isbn_input').value = isbn; // Establecer el valor del ISBN
-          document.getElementById('agregarAlCarritoForm').action = "{% url 'agregar_al_carrito' '0' %}".replace('0', isbn); // Configurar la acción del formulario
-    
+          // Obtener el formulario y configurar dinámicamente sus elementos
+          var form = document.getElementById('agregarAlCarritoForm');
+          form.querySelector('#isbn_input').value = isbn; // Establecer el valor del ISBN
+  
+          // Obtener todos los campos de 'general' y agregarlos al formulario
+          var general = {
+            isbn: "{{ general.isbn }}",
+            titulo: "{{ general.nombre }}",
+            autor: "{{ general.nombre_autor }}",
+            foto: "{{ general.foto.url }}",
+            foto: "{{ general.foto.url }}",
+            valor: "{{ general.precio }}", // Obtener los datos de 'general' en formato JSON
+          for (var key in general) {
+            if (general.hasOwnProperty(key)) {
+              var input = document.createElement('input');
+              input.type = 'hidden';
+              input.name = key;
+              input.value = general[key];
+              form.appendChild(input);
+            }
+          }
+  
+          // Configurar la acción del formulario
+          form.action = "{% url 'agregar_al_carrito' '0' %}".replace('0', isbn);
+  
           // Mostrar y enviar el formulario
-          document.getElementById('agregarAlCarritoForm').style.display = 'block';
-          document.getElementById('agregarAlCarritoForm').submit();
+          form.style.display = 'block';
+          form.submit();
         }
       });
     }
   </script>
+  
+  
   
 
 

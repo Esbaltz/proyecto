@@ -26,8 +26,14 @@ def tienda(request):
     }
     return render(request, 'aplicacion/tienda.html', data)
 
-def gral_libro(request):
-    return render(request, 'aplicacion/pagina_general_libro.html')
+def gral_libro(request, isbn):
+    general = get_object_or_404(Libro, isbn=isbn)
+    libro = Libro.objects.all()
+    data = {
+        'libro': libro,
+        'general': general,
+    }
+    return render(request, 'aplicacion/pagina_general_libro.html', data)
 
 def inf_pago(request):
     return render(request, 'aplicacion/inf_pago.html')
@@ -38,22 +44,27 @@ def carrito(request):
     total = sum(item.libro.precio * item.cantidad for item in carrito_items)
     return render(request, 'aplicacion/pagina_carrito_general.html', {'carrito_items': carrito_items, 'total': total})
 
-def agregar_al_carrito(request, isbn):
-    libro = get_object_or_404(Libro, isbn=isbn)
-    usuario = request.user # Obtener el usuario actual
+@login_required
+def agregar_al_carrito(request):
+    if request.method == 'POST':
+        usuario = request.user
+        isbn = request.POST.get('isbn')  # Obtener el ISBN del formulario POST
+        libro = get_object_or_404(Libro, isbn=isbn)
 
-    # Verificar si ya existe el libro en el carrito del usuario
-    carrito, created = Carrito.objects.get_or_create(comprador_carrito=usuario, libro=libro)
+        # Verificar si ya existe el libro en el carrito del usuario
+        carrito, created = Carrito.objects.get_or_create(comprador_carrito=usuario, libro=libro)
 
-    if not created:
-        carrito.cantidad += 1
+        if not created:
+            carrito.cantidad += 1
+        else:
+            carrito.cantidad = 1
+        
+        carrito.save()  # Guardar el carrito en ambos casos
+
+        return redirect('carrito')  # Redirigir al carrito después de agregar el libro
     else:
-        carrito.cantidad = 1
+        return redirect('inicio')  # Redirigir a la página de inicio si no es una solicitud POST válida
     
-    carrito.save() # Asegurarse de guardar el carrito en ambos casos
-
-    return redirect('carrito') # Redirigir al carrito
-
 def eliminar_del_carrito(request, carrito_id):
     carrito = get_object_or_404(Carrito, id=carrito_id)
     carrito.delete()

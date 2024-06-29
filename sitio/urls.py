@@ -31,7 +31,7 @@ urlpatterns = [
     #Páginas principales
     path('', views.index, name='index'),
     path('tienda/', views.tienda, name='tienda'),
-    path('pagina_general_libro/', views.gral_libro, name='libro'),
+    path('pagina_general_libro/<isbn>/', views.gral_libro, name='libro'),
     path('inf_pago/', views.inf_pago, name='inf_pago'),
     #carrito
     path('pagina_carrito_general/', views.carrito, name='carrito'),

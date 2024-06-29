@@ -80,7 +80,7 @@
     {% for p in libro %}
         {% if p.best_seler %}
             <div class="w3-quarter">
-                <a href="{% url 'libro' %}" class="img-move">
+                <a href="{% url 'libro' p.isbn %}" class="img-move">
                 <img src="{% static 'aplicacion/img/Autonomous_libro.jpg' %}" alt="Autonumus" style="width:100%">
                 </a>
             <h3>{{ p.nombre }}</h3>
@@ -96,38 +96,7 @@
             <p class="w3-center w3-large">En esta sección encontrarás las mejores ofertas</p>
         </div>
         <!-- Second Photo Grid-->
-        <div class="w3-row-padding w3-padding-16 w3-center">
-            <div class="w3-quarter">
-                <a href="pagina_general_libro.html" class="img-move">
-                    <img src="{% static 'aplicacion/img/historia2.png' %}" alt="Historia" style="width:100%">
-                </a>
-                <h3>Breve historia del mundo</h3>
-                <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-            </div>
-            <div class="w3-quarter">
-                <a href="pagina_general_libro.html" class="img-move">
-                    <img src="{% static 'aplicacion/img/metro.jpg' %}" alt="Metro" style="width:100%">
-                </a>
-                <h3>Metro</h3>
-                <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.
-                </p>
-            </div>
-            <div class="w3-quarter">
-                <a href="pagina_general_libro.html" class="img-move">
-                    <img src="{% static 'aplicacion/img/Holly_stephen_king.jpg' %}" alt="Holly" style="width:100%">
-                </a>
-                <h3>Holly</h3>
-                <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-            </div>
-            <div class="w3-quarter">
-                <a href="pagina_general_libro.html" class="img-move">
-                    <img src="{% static 'aplicacion/img/El_hobit.jpg' %}" alt="El Hobbit" style="width:100%">
-                </a>
-                <h3>El hobbit</h3>
-                <p>Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-            </div>
-        </div>
-    </div>
+        
 
     <!-- Footer -->
     <footer class="w3-center w3-black w3-padding-64 foot">
