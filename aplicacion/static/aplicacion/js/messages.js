@@ -39,7 +39,7 @@ const cerrarSesion = (url) => {
         displayMode: 'once',
         id: 'question',
         zindex: 999,
-        title: 'Calmao',
+        title: 'Calmao xd',
         message: '¿Seguro que quieres cerrar sesión?',
         position: 'center',
         buttons: [
